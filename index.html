@@ -114,10 +114,22 @@ nav.solid{
 .nav-logo{
   font-family:var(--font-display);
   font-size:1.05rem;letter-spacing:.06em;
-  display:flex;align-items:center;gap:.4rem;
+  display:flex;align-items:center;gap:.5rem;
 }
 .nav-logo .paw{color:var(--red)}
 .nav-logo .r{color:var(--red)}
+.nav-logo-img{
+  width:38px;height:38px;object-fit:contain;
+  animation:wheelSpin 8s linear infinite;
+  filter:drop-shadow(0 0 6px rgba(227,0,15,.5));
+  flex-shrink:0;
+}
+.nav-logo:hover .nav-logo-img{animation-duration:1.2s;}
+.nav-logo-text{font-family:var(--font-display);font-size:.9rem;letter-spacing:.05em}
+@keyframes wheelSpin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
 
 .hamburger{
   display:flex;flex-direction:column;gap:5px;
@@ -840,6 +852,111 @@ textarea.form-control{resize:vertical;min-height:90px}
 }
 
 /* ════════════════════════════════════════
+   MINIJUEGOS
+════════════════════════════════════════ */
+.game-selector{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.5rem}
+.game-sel-btn{
+  background:var(--card);border:2px solid var(--border);
+  padding:1.2rem .8rem;text-align:center;cursor:pointer;
+  transition:border-color .2s,background .2s,transform .15s;
+  display:flex;flex-direction:column;align-items:center;gap:.3rem;
+}
+.game-sel-btn.active{border-color:var(--red);background:rgba(227,0,15,.08)}
+.game-sel-btn:hover:not(.active){border-color:rgba(227,0,15,.4);transform:translateY(-2px)}
+.game-sel-icon{font-size:1.8rem}
+.game-sel-name{font-family:var(--font-head);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
+.game-sel-desc{font-size:.65rem;color:var(--gray);letter-spacing:.06em}
+
+.game-container{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--red);padding:1.6rem 1.2rem}
+.game-screen{}
+.game-title-big{
+  font-family:var(--font-impact);font-size:clamp(2rem,8vw,3rem);
+  line-height:1;text-transform:uppercase;text-align:center;margin-bottom:.5rem;
+}
+
+/* TRIVIA */
+.trivia-header{margin-bottom:1.2rem}
+.trivia-progress-wrap{height:4px;background:var(--dim);margin-bottom:.8rem;overflow:hidden}
+.trivia-progress-bar{height:100%;background:linear-gradient(90deg,var(--red),var(--orange));width:10%;transition:width .3s}
+.trivia-meta{display:flex;align-items:center;justify-content:space-between}
+.trivia-score-live{font-family:var(--font-head);font-size:.8rem;font-weight:700;color:var(--amber)}
+.trivia-timer{
+  font-family:var(--font-impact);font-size:1.4rem;color:var(--red);
+  text-shadow:0 0 12px var(--glow);min-width:32px;text-align:right;
+  transition:color .3s;
+}
+.trivia-timer.urgent{color:var(--orange);animation:pulse .5s ease-in-out infinite alternate}
+@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.15)}}
+#triviaQNum{font-family:var(--font-head);font-size:.75rem;color:var(--gray);letter-spacing:.1em}
+.trivia-q{
+  font-family:var(--font-head);font-size:1.05rem;font-weight:600;
+  line-height:1.5;margin-bottom:1.2rem;color:var(--white);letter-spacing:.02em;
+}
+.trivia-opts{display:flex;flex-direction:column;gap:.6rem}
+.trivia-opt{
+  font-family:var(--font-head);font-size:.85rem;font-weight:600;
+  letter-spacing:.06em;text-align:left;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  color:var(--white);padding:.8rem 1rem;cursor:pointer;
+  transition:border-color .15s,background .15s;
+  clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
+}
+.trivia-opt:hover:not(:disabled){background:rgba(227,0,15,.1);border-color:rgba(227,0,15,.5)}
+.trivia-opt.correct{background:rgba(0,200,80,.18)!important;border-color:#00c850!important;color:#00ff88}
+.trivia-opt.wrong{background:rgba(227,0,15,.18)!important;border-color:var(--red)!important;color:#ff6666}
+.trivia-opt:disabled{cursor:default}
+.trivia-feedback{
+  font-family:var(--font-head);font-size:.82rem;font-weight:600;
+  min-height:1.4rem;margin-top:.8rem;letter-spacing:.06em;
+  transition:opacity .3s;
+}
+
+/* Result screen */
+.game-result-icon{font-size:3.5rem;text-align:center;margin-bottom:.5rem}
+.game-result-title{font-family:var(--font-impact);font-size:2.5rem;text-align:center;color:var(--red);text-transform:uppercase;text-shadow:0 0 30px var(--glow)}
+.game-result-score{font-family:var(--font-impact);font-size:2rem;text-align:center;color:var(--amber);margin:.5rem 0}
+.game-result-msg{font-family:var(--font-body);font-size:.9rem;color:#aaa;text-align:center;line-height:1.7}
+
+/* AHORCADO */
+.ahorcado-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.ahorcado-cat{font-family:var(--font-head);font-size:.75rem;letter-spacing:.15em;color:var(--red);text-transform:uppercase}
+.ahorcado-lives{font-size:1.1rem;letter-spacing:.05em}
+.ahorcado-svg-wrap{text-align:center;margin:.5rem 0}
+#ahorcadoSVG{width:120px;height:135px}
+.ahorcado-hint{font-family:var(--font-body);font-size:.8rem;color:var(--gray);text-align:center;margin-bottom:.8rem;font-style:italic;min-height:1.2rem}
+.ahorcado-word{
+  display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;
+  margin:.8rem 0 1rem;
+}
+.ahorcado-letter{
+  width:30px;height:36px;border-bottom:2px solid var(--dim);
+  display:flex;align-items:flex-end;justify-content:center;
+  font-family:var(--font-impact);font-size:1.3rem;color:var(--white);
+  padding-bottom:3px;transition:color .2s;
+}
+.ahorcado-letter.revealed{color:var(--amber);border-bottom-color:var(--amber)}
+.ahorcado-letter.space{border-bottom:none;width:12px}
+.ahorcado-used{
+  font-family:var(--font-head);font-size:.7rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);text-align:center;margin-bottom:1rem;min-height:1.1rem;
+}
+.ahorcado-keyboard{display:flex;flex-wrap:wrap;justify-content:center;gap:.3rem}
+.ahorcado-key{
+  font-family:var(--font-head);font-weight:700;font-size:.75rem;
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  color:var(--white);cursor:pointer;transition:all .15s;letter-spacing:0;
+}
+.ahorcado-key:hover:not(:disabled){background:rgba(227,0,15,.15);border-color:var(--red);color:var(--red)}
+.ahorcado-key:disabled{opacity:.25;cursor:default}
+.ahorcado-key.hit{background:rgba(255,180,0,.12);border-color:var(--amber);color:var(--amber)}
+.ahorcado-key.miss{background:rgba(227,0,15,.08);border-color:#500;color:#600}
+.ahorcado-msg{
+  font-family:var(--font-impact);font-size:1.5rem;text-align:center;
+  text-transform:uppercase;margin-top:.5rem;min-height:2rem;
+}
+
+/* ════════════════════════════════════════
    FOOTER
 ════════════════════════════════════════ */
 footer{
@@ -886,7 +1003,8 @@ footer{
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a class="nav-logo" href="#">
-    🐾 EL GATO <span class="r">NEGRO</span>
+    <img src="img/logo_gato_negro.png" alt="El Gato Negro Car Detail" class="nav-logo-img" id="navLogoImg">
+    <span class="nav-logo-text">EL GATO <span class="r">NEGRO</span></span>
   </a>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -898,6 +1016,7 @@ footer{
   <a href="#tabs" onclick="switchTab('turnos');closeMobileMenu()">Turnos</a>
   <a href="#tabs" onclick="switchTab('tienda');closeMobileMenu()">Tienda</a>
   <a href="#tabs" onclick="switchTab('reviews');closeMobileMenu()">Reseñas</a>
+  <a href="#tabs" onclick="switchTab('minijuegos');closeMobileMenu()">🎮 Mini Juegos</a>
   <a href="https://www.instagram.com/elgatonegrocardetail/" target="_blank">Instagram</a>
 </div>
 
@@ -984,6 +1103,7 @@ footer{
   <button class="tab-btn" onclick="switchTab('turnos')">📅 Turnos</button>
   <button class="tab-btn" onclick="switchTab('tienda')">🛒 Tienda</button>
   <button class="tab-btn" onclick="switchTab('reviews')">⭐ Reseñas</button>
+  <button class="tab-btn" onclick="switchTab('minijuegos')">🎮 Juegos</button>
 </div>
 
 <!-- ══ TAB: TRABAJOS ══ -->
@@ -1141,6 +1261,14 @@ footer{
       <span class="confirm-icon">🏎️</span>
       <div class="confirm-title">¡Turno Reservado!</div>
       <p class="confirm-msg" id="confirmMsg"></p>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem">
+        <a id="gcalLink" href="#" target="_blank" class="btn-race" style="width:100%;justify-content:center;padding:.9rem;display:flex;align-items:center;gap:.5rem;text-decoration:none">
+          📅 Agregar a Google Calendar
+        </a>
+        <button class="btn-ghost" style="width:100%;justify-content:center;padding:.9rem" onclick="document.getElementById('turnoForm').style.display='block';document.getElementById('turnoConfirm').classList.remove('show')">
+          ← Hacer otro turno
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -1201,6 +1329,99 @@ footer{
         Publicar reseña
       </button>
     </div>
+  </div>
+</div>
+
+<!-- ══ TAB: MINIJUEGOS ══ -->
+<div class="tab-panel" id="panel-minijuegos">
+  <div class="section-pad">
+    <div class="s-eyebrow">Mini Juegos</div>
+    <h2 class="s-title">ZONA <span class="r">GAMER</span></h2>
+    <p class="s-desc">¿Cuánto sabés de autos y Rápido & Furioso? Poné a prueba tu conocimiento.</p>
+
+    <!-- Selector de juego -->
+    <div class="game-selector">
+      <button class="game-sel-btn active" onclick="selectGame('trivia',this)">
+        <span class="game-sel-icon">🏎️</span>
+        <span class="game-sel-name">Trivia F&F</span>
+        <span class="game-sel-desc">Preguntas y respuestas</span>
+      </button>
+      <button class="game-sel-btn" onclick="selectGame('ahorcado',this)">
+        <span class="game-sel-icon">🔤</span>
+        <span class="game-sel-name">Ahorcado</span>
+        <span class="game-sel-desc">Autos & Detailing</span>
+      </button>
+    </div>
+
+    <!-- ── TRIVIA ── -->
+    <div id="game-trivia" class="game-container">
+      <div id="trivia-start" class="game-screen">
+        <div class="game-title-big">🏎️ TRIVIA<br><span style="color:var(--red)">RÁPIDO & FURIOSO</span></div>
+        <p style="color:#aaa;font-size:.9rem;margin:1rem 0 1.5rem;line-height:1.8">10 preguntas · 15 segundos cada una<br>Sobre la saga, los autos y el mundo del detailing</p>
+        <button class="btn-race" style="width:100%;justify-content:center;padding:1rem;font-size:.9rem" onclick="startTrivia()">
+          🚦 ¡ARRANCAR!
+        </button>
+      </div>
+      <div id="trivia-play" class="game-screen" style="display:none">
+        <div class="trivia-header">
+          <div class="trivia-progress-wrap">
+            <div class="trivia-progress-bar" id="triviaProgressBar"></div>
+          </div>
+          <div class="trivia-meta">
+            <span id="triviaQNum">1/10</span>
+            <span class="trivia-score-live">⭐ <span id="triviaScoreLive">0</span></span>
+            <span class="trivia-timer" id="triviaTimer">15</span>
+          </div>
+        </div>
+        <div class="trivia-q" id="triviaQuestion"></div>
+        <div class="trivia-opts" id="triviaOpts"></div>
+        <div class="trivia-feedback" id="triviaFeedback"></div>
+      </div>
+      <div id="trivia-end" class="game-screen" style="display:none">
+        <div class="game-result-icon" id="triviaResultIcon">🏆</div>
+        <div class="game-result-title" id="triviaResultTitle">¡BIEN!</div>
+        <div class="game-result-score" id="triviaResultScore">0 / 10</div>
+        <div class="game-result-msg" id="triviaResultMsg"></div>
+        <button class="btn-race" style="width:100%;justify-content:center;padding:1rem;margin-top:1.5rem" onclick="startTrivia()">
+          🔄 Jugar de nuevo
+        </button>
+      </div>
+    </div>
+
+    <!-- ── AHORCADO ── -->
+    <div id="game-ahorcado" class="game-container" style="display:none">
+      <div id="ahorcado-ui">
+        <div class="ahorcado-header">
+          <div class="ahorcado-cat" id="ahorcadoCat">🚗 Categoría</div>
+          <div class="ahorcado-lives" id="ahorcadoLives">❤️❤️❤️❤️❤️❤️</div>
+        </div>
+        <div class="ahorcado-svg-wrap">
+          <svg id="ahorcadoSVG" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Horca -->
+            <line x1="20" y1="170" x2="140" y2="170" stroke="#444" stroke-width="3"/>
+            <line x1="50" y1="170" x2="50" y2="20" stroke="#444" stroke-width="3"/>
+            <line x1="50" y1="20" x2="100" y2="20" stroke="#444" stroke-width="3"/>
+            <line x1="100" y1="20" x2="100" y2="40" stroke="#444" stroke-width="3"/>
+            <!-- Partes del cuerpo (ocultas inicialmente) -->
+            <circle cx="100" cy="52" r="12" stroke="#e3000f" stroke-width="2.5" fill="none" id="h-head" style="display:none"/>
+            <line x1="100" y1="64" x2="100" y2="110" stroke="#e3000f" stroke-width="2.5" id="h-body" style="display:none"/>
+            <line x1="100" y1="78" x2="80" y2="100" stroke="#e3000f" stroke-width="2.5" id="h-larm" style="display:none"/>
+            <line x1="100" y1="78" x2="120" y2="100" stroke="#e3000f" stroke-width="2.5" id="h-rarm" style="display:none"/>
+            <line x1="100" y1="110" x2="80" y2="140" stroke="#e3000f" stroke-width="2.5" id="h-lleg" style="display:none"/>
+            <line x1="100" y1="110" x2="120" y2="140" stroke="#e3000f" stroke-width="2.5" id="h-rleg" style="display:none"/>
+          </svg>
+        </div>
+        <div class="ahorcado-hint" id="ahorcadoHint"></div>
+        <div class="ahorcado-word" id="ahorcadoWord"></div>
+        <div class="ahorcado-used" id="ahorcadoUsed"></div>
+        <div class="ahorcado-keyboard" id="ahorcadoKeyboard"></div>
+        <div class="ahorcado-msg" id="ahorcadoMsg"></div>
+        <button class="btn-ghost" style="width:100%;justify-content:center;padding:.8rem;margin-top:1rem" onclick="initAhorcado()">
+          🔄 Nueva palabra
+        </button>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1443,7 +1664,7 @@ statsObs.observe(document.querySelector('.stats-bar'));
 // TABS
 // ══════════════════════════════════════
 function switchTab(name){
-  const order=['trabajos','turnos','tienda','reviews'];
+  const order=['trabajos','turnos','tienda','reviews','minijuegos'];
   document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',order[i]===name));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+name));
 }
@@ -1543,6 +1764,19 @@ function confirmarTurno(){
   document.getElementById('confirmMsg').innerHTML=msg.replace(/\n/g,'<br>');
   document.getElementById('turnoForm').style.display='none';
   document.getElementById('turnoConfirm').classList.add('show');
+
+  // ── Generar link Google Calendar ──
+  const [hh,mm]=selHor.textContent.split(':').map(Number);
+  const year=2026;const month=6; // Junio
+  const pad=n=>String(n).padStart(2,'0');
+  const dtStart=`${year}${pad(month)}${pad(selectedDay)}T${pad(hh)}${pad(mm)}00`;
+  const dtEnd=`${year}${pad(month)}${pad(selectedDay)}T${pad(hh+2)}${pad(mm)}00`;
+  const gcTitle=encodeURIComponent(`El Gato Negro Car Detail - ${srvs.join(' + ')}`);
+  const gcDetails=encodeURIComponent(`Auto: ${car}\nServicio: ${srvs.join(', ')}\nContacto: +54 11 6886-8528 (Tomi)`);
+  const gcLocation=encodeURIComponent('El Gato Negro Car Detail, Cañuelas, Buenos Aires');
+  const gcUrl=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gcTitle}&dates=${dtStart}/${dtEnd}&details=${gcDetails}&location=${gcLocation}`;
+  document.getElementById('gcalLink').href=gcUrl;
+
   setTimeout(()=>window.open('https://wa.me/541168868528?text='+encodeURIComponent(
     `Hola Tomi! Quiero reservar un turno 🏁\nNombre: ${name}\nAuto: ${car}\nDía: ${selectedDay} de Junio · ${selHor.textContent}\nServicio: ${srvs.join(', ')}\nTeléfono: ${phone}`
   ),'_blank'),900);
@@ -1773,6 +2007,208 @@ function seekAudio(e) {
 
 // Cargar la primera pista
 loadTrack(0);
+
+// ══════════════════════════════════════
+// MINIJUEGOS — Selector
+// ══════════════════════════════════════
+function selectGame(name,btn){
+  document.querySelectorAll('.game-sel-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('game-trivia').style.display=name==='trivia'?'block':'none';
+  document.getElementById('game-ahorcado').style.display=name==='ahorcado'?'block':'none';
+}
+
+// ══════════════════════════════════════
+// TRIVIA
+// ══════════════════════════════════════
+const triviaQuestions=[
+  {q:'¿Cuál es el auto icónico que Dom Toretto usa en la primera película?',opts:['Dodge Charger 1970','Ford Mustang 1969','Plymouth Barracuda 1970','Pontiac GTO 1969'],a:0,fact:'El Charger 1970 de Dom es uno de los autos más famosos del cine.'},
+  {q:'¿Qué significa "NOS" en el contexto de las carreras de la saga?',opts:['Nitrógeno Oxidante Supremo','Óxido Nitroso','Sistema de Nitratos','Nitroso Orgánico Sintético'],a:1,fact:'El óxido nitroso (N₂O) inyecta oxígeno extra al motor para mayor potencia.'},
+  {q:'¿En qué ciudad se desarrolla principalmente "Rápido y Furioso: Tokio Race"?',opts:['Osaka','Kyoto','Tokio','Hiroshima'],a:2,fact:'El drift culture de Tokio es protagonista de esta película.'},
+  {q:'¿Qué producto se usa para proteger la pintura con una capa dura tipo "vidrio"?',opts:['Cera Carnauba','Shampoo PH Neutro','Sellador Cerámico','APC Universal'],a:2,fact:'El sellador cerámico forma una capa de SiO2 ultra resistente sobre la pintura.'},
+  {q:'¿Cuál es el nombre real del personaje de Vin Diesel en la saga?',opts:['Marcus Toretto','Dominic Toretto','Daniel Toretto','David Toretto'],a:1,fact:'Dominic "Dom" Toretto, el rey de las carreras callejeras.'},
+  {q:'¿Qué es el "detailing" vehicular?',opts:['Reparar mecánica del auto','Limpieza y restauración estética profunda','Tuning y modificaciones','Cambio de aceite profesional'],a:1,fact:'El detailing es la limpieza y restauración estética completa del vehículo.'},
+  {q:'¿Qué auto maneja Brian O\'Conner en la primera película?',opts:['Toyota Supra MK4','Mitsubishi Eclipse','Honda Civic','Mazda RX-7'],a:1,fact:'El Mitsubishi Eclipse verde de Brian es legendario en la saga.'},
+  {q:'¿Para qué sirve la cera Carnauba en el detailing?',opts:['Limpiar el interior','Proteger y dar brillo a la pintura','Desengrasante de motor','Cristalizar vidrios'],a:1,fact:'La cera carnauba proviene de una palma brasileña y es la más usada en detailing premium.'},
+  {q:'¿En cuántas películas principales de la saga aparece el personaje Dom Toretto?',opts:['7','8','9','10'],a:3,fact:'Dom aparece desde la primera (2001) hasta la décima (2023) película.'},
+  {q:'¿Qué es el APC en el mundo del detailing?',opts:['All Purpose Cleaner — limpiador universal','Auto Polish Compound','Advanced Paint Coating','Air Pressure Cleaner'],a:0,fact:'El APC (All Purpose Cleaner) limpia cualquier superficie del auto, interior y exterior.'},
+  {q:'¿Cuál fue el primer Auto de Paul Walker en "Rápido y Furioso" 2001?',opts:['Mitsubishi Lancer','Honda Civic EG 1995','Dodge Charger','Ford Focus'],a:1,fact:'El Honda Civic blanco de Brian en la primera escena del film es un clásico.'},
+  {q:'¿Qué significa "drift" en el automovilismo?',opts:['Acelerar al máximo en línea recta','Técnica de sobreviro controlado en curvas','Frenada de emergencia','Cambio de marchas ultrarrápido'],a:1,fact:'El drift es la técnica japonesa de conducir de costado con el auto sobrevirando.'},
+];
+
+let triviaPool=[],triviaIdx=0,triviaScore=0,triviaTimer=null,triviaTime=15;
+
+function startTrivia(){
+  triviaPool=[...triviaQuestions].sort(()=>Math.random()-.5).slice(0,10);
+  triviaIdx=0;triviaScore=0;
+  document.getElementById('trivia-start').style.display='none';
+  document.getElementById('trivia-end').style.display='none';
+  document.getElementById('trivia-play').style.display='block';
+  showTriviaQuestion();
+}
+
+function showTriviaQuestion(){
+  if(triviaIdx>=triviaPool.length){endTrivia();return;}
+  const q=triviaPool[triviaIdx];
+  document.getElementById('triviaQNum').textContent=`${triviaIdx+1}/10`;
+  document.getElementById('triviaScoreLive').textContent=triviaScore;
+  document.getElementById('triviaQuestion').textContent=q.q;
+  document.getElementById('triviaFeedback').textContent='';
+  document.getElementById('triviaProgressBar').style.width=((triviaIdx/10)*100)+'%';
+  const optsEl=document.getElementById('triviaOpts');
+  optsEl.innerHTML=q.opts.map((o,i)=>`
+    <button class="trivia-opt" onclick="answerTrivia(${i})">${String.fromCharCode(65+i)}. ${o}</button>
+  `).join('');
+  triviaTime=15;
+  document.getElementById('triviaTimer').textContent=triviaTime;
+  document.getElementById('triviaTimer').classList.remove('urgent');
+  clearInterval(triviaTimer);
+  triviaTimer=setInterval(()=>{
+    triviaTime--;
+    const tEl=document.getElementById('triviaTimer');
+    tEl.textContent=triviaTime;
+    if(triviaTime<=5)tEl.classList.add('urgent');
+    if(triviaTime<=0){clearInterval(triviaTimer);answerTrivia(-1);}
+  },1000);
+}
+
+function answerTrivia(idx){
+  clearInterval(triviaTimer);
+  const q=triviaPool[triviaIdx];
+  const opts=document.querySelectorAll('.trivia-opt');
+  opts.forEach((o,i)=>{
+    o.disabled=true;
+    if(i===q.a)o.classList.add('correct');
+    else if(i===idx)o.classList.add('wrong');
+  });
+  const fb=document.getElementById('triviaFeedback');
+  if(idx===q.a){
+    triviaScore++;
+    fb.style.color='#00ff88';
+    fb.textContent='✅ ¡Correcto! '+q.fact;
+  } else if(idx===-1){
+    fb.style.color='var(--orange)';
+    fb.textContent='⏱️ Tiempo! '+q.fact;
+  } else {
+    fb.style.color='#ff6666';
+    fb.textContent='❌ Incorrecto. '+q.fact;
+  }
+  document.getElementById('triviaScoreLive').textContent=triviaScore;
+  triviaIdx++;
+  setTimeout(showTriviaQuestion,2200);
+}
+
+function endTrivia(){
+  document.getElementById('trivia-play').style.display='none';
+  document.getElementById('trivia-end').style.display='block';
+  document.getElementById('triviaResultScore').textContent=`${triviaScore} / 10`;
+  const msgs=[
+    [0,3,'💀','NOOB TOTAL','Volvé a ver las películas y estudiá detailing...'],
+    [4,5,'🚗','PIBE DE BARRIO','No está mal, pero le falta calle.'],
+    [6,7,'🔧','MECÁNICO DE DOMINGO','Sabés algo, pero falta llegar al nivel Dom.'],
+    [8,9,'🏁','CASI PROFESIONAL','¡Eso! Te faltó poco para ser leyenda.'],
+    [10,10,'🏆','LEYENDA DEL MOTOR','100% puro gato negro. Nadie te gana en la pista.'],
+  ];
+  const [,, icon,title,msg]=msgs.find(([min,max])=>triviaScore>=min&&triviaScore<=max);
+  document.getElementById('triviaResultIcon').textContent=icon;
+  document.getElementById('triviaResultTitle').textContent=title;
+  document.getElementById('triviaResultMsg').textContent=msg;
+}
+
+// ══════════════════════════════════════
+// AHORCADO
+// ══════════════════════════════════════
+const ahorcadoWords=[
+  {word:'CARNAUBA',hint:'Cera premium extraída de una palma brasileña 🌴',cat:'🧴 Detailing'},
+  {word:'CERAMIC',hint:'Sellador que forma una capa dura tipo vidrio 🪟',cat:'🧴 Detailing'},
+  {word:'DETAILING',hint:'El trabajo que hace El Gato Negro 🐱',cat:'🔧 Oficio'},
+  {word:'NITRO',hint:'El turbo de la calle, hace ir más rápido 💨',cat:'🏎️ F&F'},
+  {word:'TORETTO',hint:'El apellido de Dom, el protagonista 👊',cat:'🏎️ F&F'},
+  {word:'TURBO',hint:'Sistema que fuerza más aire al motor ⚡',cat:'🏎️ F&F'},
+  {word:'CHARGER',hint:'El auto legendario de Dom, fabricado en 1970 🚗',cat:'🏎️ F&F'},
+  {word:'DRIFT',hint:'Técnica de sobreviraje controlado en curvas 🌀',cat:'🏎️ F&F'},
+  {word:'ENCERADO',hint:'Proceso de aplicar cera protectora a la carrocería ✨',cat:'🔧 Oficio'},
+  {word:'SHAMPOO',hint:'Se usa para lavar la carrocería sin dañar la pintura 🫧',cat:'🧴 Detailing'},
+  {word:'SELLADOR',hint:'Protege la pintura del sol y el ambiente ☀️',cat:'🧴 Detailing'},
+  {word:'ASPIRADO',hint:'Limpiar el interior del auto con aspiradora 🌪️',cat:'🔧 Oficio'},
+  {word:'ECLIPSE',hint:'Auto de Brian O\'Conner en la primera peli 🟢',cat:'🏎️ F&F'},
+  {word:'FAMILIA',hint:'La palabra favorita de Dom Toretto ❤️',cat:'🏎️ F&F'},
+  {word:'DEGREASER',hint:'Desengrasante para limpiar el motor y zonas difíciles',cat:'🧴 Detailing'},
+];
+
+const bodyParts=['h-head','h-body','h-larm','h-rarm','h-lleg','h-rleg'];
+let ahWord='',ahGuessed=[],ahWrong=0,ahMax=6;
+
+function initAhorcado(){
+  const data=ahorcadoWords[Math.floor(Math.random()*ahorcadoWords.length)];
+  ahWord=data.word.toUpperCase();
+  ahGuessed=[];ahWrong=0;
+  document.getElementById('ahorcadoCat').textContent=data.cat;
+  document.getElementById('ahorcadoHint').textContent=data.hint;
+  document.getElementById('ahorcadoMsg').textContent='';
+  document.getElementById('ahorcadoMsg').style.color='var(--red)';
+  bodyParts.forEach(id=>{document.getElementById(id).style.display='none'});
+  renderAhorcadoLives();
+  renderAhorcadoWord();
+  renderAhorcadoKeyboard();
+  document.getElementById('ahorcadoUsed').textContent='';
+}
+
+function renderAhorcadoLives(){
+  const lives=ahMax-ahWrong;
+  document.getElementById('ahorcadoLives').textContent='❤️'.repeat(lives)+'🖤'.repeat(ahWrong);
+}
+
+function renderAhorcadoWord(){
+  const el=document.getElementById('ahorcadoWord');
+  el.innerHTML=ahWord.split('').map(ch=>{
+    if(ch===' ')return '<div class="ahorcado-letter space"></div>';
+    const revealed=ahGuessed.includes(ch);
+    return `<div class="ahorcado-letter${revealed?' revealed':''}">${revealed?ch:''}</div>`;
+  }).join('');
+}
+
+function renderAhorcadoKeyboard(){
+  const kb=document.getElementById('ahorcadoKeyboard');
+  const letters='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
+  kb.innerHTML=letters.map(l=>`
+    <button class="ahorcado-key${ahGuessed.includes(l)?(ahWord.includes(l)?' hit':' miss'):''}"
+      ${ahGuessed.includes(l)?'disabled':''} onclick="guessLetter('${l}')">${l}</button>
+  `).join('');
+}
+
+function guessLetter(letter){
+  if(ahGuessed.includes(letter))return;
+  ahGuessed.push(letter);
+  const kb=document.getElementById('ahorcadoKeyboard');
+  const usedEl=document.getElementById('ahorcadoUsed');
+  if(ahWord.includes(letter)){
+    // hit
+  } else {
+    ahWrong++;
+    if(ahWrong<=bodyParts.length){
+      document.getElementById(bodyParts[ahWrong-1]).style.display='block';
+    }
+  }
+  renderAhorcadoLives();
+  renderAhorcadoWord();
+  renderAhorcadoKeyboard();
+  usedEl.textContent='Usadas: '+ahGuessed.filter(l=>!ahWord.includes(l)).join(' ');
+  const msg=document.getElementById('ahorcadoMsg');
+  const won=ahWord.split('').every(ch=>ch===' '||ahGuessed.includes(ch));
+  if(won){
+    msg.style.color='#00ff88';
+    msg.textContent='🏆 ¡LO LOGRASTE!';
+    document.querySelectorAll('.ahorcado-key').forEach(k=>k.disabled=true);
+  } else if(ahWrong>=ahMax){
+    msg.style.color='var(--red)';
+    msg.textContent='💀 Era: '+ahWord;
+    document.querySelectorAll('.ahorcado-key').forEach(k=>k.disabled=true);
+  }
+}
+
+// Inicializar ahorcado al cargar
+initAhorcado();
 
 // ══════════════════════════════════════
 // REVEAL (fallback for non-AOS items)
