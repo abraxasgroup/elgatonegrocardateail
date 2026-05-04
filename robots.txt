@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Bloqueos opcionales (si no usás estas rutas, dejalo igual por seguridad)
+Disallow: /admin/
+Disallow: /login/
+Disallow: /checkout/
+Disallow: /cart/
+
+# Evitar indexar parámetros basura
+Disallow: /*?*
+Allow: /*?utm_source=
+Allow: /*?utm_medium=
+Allow: /*?utm_campaign=
+
+# Sitemap
+Sitemap: https://gatonegrocardetail.com/sitemap.xml
