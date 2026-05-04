@@ -5,18 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>El Gato Negro · Car Detail · Cañuelas</title>
 <meta name="description" content="Estética vehicular premium en Cañuelas, Buenos Aires. Lavado premium, encerado Carnauba, detailing completo y tienda Toxic Shine.">
-
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Anton&family=Oswald:wght@200;300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <!-- AOS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
 <style>
 /* ════════════════════════════════════════
    RESET & ROOT
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#080808;
@@ -51,7 +48,6 @@ button{font-family:inherit;cursor:pointer}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:#000}
 ::-webkit-scrollbar-thumb{background:var(--red)}
-
 /* ── SCANLINES ── */
 body::before{
   content:'';
@@ -62,13 +58,11 @@ body::before{
   );
   pointer-events:none;z-index:9997;
 }
-
 /* ── NOISE ── */
 .noise{
   position:fixed;inset:0;pointer-events:none;z-index:9996;opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-
 /* ── CURSOR ── */
 .cursor{
   position:fixed;width:10px;height:10px;
@@ -86,20 +80,18 @@ body::before{
   transition:transform .16s ease-out,width .2s,height .2s;
   opacity:.5;
 }
-
 /* ════════════════════════════════════════
    METALLIC TEXT
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .metallic-text{
   background:var(--chrome);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
 }
-
 /* ════════════════════════════════════════
    NAV
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   padding:0 1.2rem;height:56px;
@@ -130,7 +122,6 @@ nav.solid{
   from{transform:rotate(0deg)}
   to{transform:rotate(360deg)}
 }
-
 .hamburger{
   display:flex;flex-direction:column;gap:5px;
   background:none;border:none;padding:4px;
@@ -142,7 +133,6 @@ nav.solid{
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
 .mobile-menu{
   position:fixed;top:56px;left:0;right:0;bottom:0;
   background:rgba(6,6,6,.98);backdrop-filter:blur(24px);
@@ -163,17 +153,15 @@ nav.solid{
 }
 .mobile-menu a:hover{color:var(--white);letter-spacing:.22em}
 .mobile-menu a:hover::after{width:100%}
-
 /* ════════════════════════════════════════
    HERO
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 #hero{
   position:relative;min-height:100svh;
   display:flex;flex-direction:column;
   justify-content:flex-end;padding:0 0 3rem;
   overflow:hidden;
 }
-
 /* Video BG */
 .hero-video{
   position:absolute;inset:0;z-index:0;
@@ -183,7 +171,6 @@ nav.solid{
   width:100%;height:100%;object-fit:cover;
   opacity:.45;
 }
-
 /* Slideshow fallback (always visible over video) */
 .hero-slides{position:absolute;inset:0;z-index:1}
 .hero-slide{
@@ -198,12 +185,10 @@ nav.solid{
     linear-gradient(to top,rgba(8,8,8,1) 0%,rgba(8,8,8,.5) 35%,rgba(8,8,8,.15) 65%,transparent 100%),
     linear-gradient(to right,rgba(8,8,8,.7) 0%,transparent 55%);
 }
-
 /* Particles canvas */
 #particles-canvas{
   position:absolute;inset:0;z-index:2;pointer-events:none;
 }
-
 /* Speed lines */
 .speed-lines{
   position:absolute;inset:0;z-index:3;pointer-events:none;
@@ -218,7 +203,6 @@ nav.solid{
   0%{background-position:0 0}
   100%{background-position:400px 0}
 }
-
 /* Glitch top bar */
 .hero-accent{
   position:absolute;top:0;left:0;right:0;height:3px;z-index:5;
@@ -230,7 +214,6 @@ nav.solid{
   48%{opacity:.7;transform:scaleX(.97) translateX(3px)}
   52%{opacity:1;transform:scaleX(1) translateX(-1px)}
 }
-
 /* Hero content */
 .hero-content{
   position:relative;z-index:6;padding:0 1.4rem;
@@ -241,7 +224,6 @@ nav.solid{
   display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem;
 }
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:linear-gradient(90deg,var(--red),var(--orange))}
-
 .hero-h1{
   font-family:var(--font-display);
   font-size:clamp(3rem,14vw,7rem);
@@ -263,7 +245,6 @@ nav.solid{
   letter-spacing:.08em;margin-bottom:2.2rem;font-weight:300;
 }
 .hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
-
 /* Slide dots */
 .slide-dots{
   position:absolute;bottom:1.6rem;right:1.4rem;z-index:7;
@@ -274,7 +255,6 @@ nav.solid{
   transition:background .3s,width .3s;cursor:pointer;border:none;padding:0;
 }
 .slide-dot.active{background:var(--red);width:36px}
-
 /* Vertical text */
 .hero-strip{
   position:absolute;top:50%;right:-.5rem;
@@ -284,7 +264,6 @@ nav.solid{
   letter-spacing:.55em;color:rgba(255,255,255,.1);
   text-transform:uppercase;white-space:nowrap;z-index:7;
 }
-
 /* ── TACHOMETER ── */
 #tacho{
   position:absolute;top:50%;right:1.2rem;
@@ -336,10 +315,9 @@ nav.solid{
   background:var(--dim);transition:background .3s;
 }
 .tacho-dot.red{background:var(--red)}
-
 /* ════════════════════════════════════════
    STATS BAR
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .stats-bar{
   background:linear-gradient(135deg,#1a0000,var(--red) 50%,#1a0000);
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -359,10 +337,9 @@ nav.solid{
   letter-spacing:.22em;color:rgba(255,255,255,.7);
   text-transform:uppercase;margin-top:.2rem;
 }
-
 /* ════════════════════════════════════════
    BUTTONS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .btn-race{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.75rem 1.7rem;
@@ -382,7 +359,6 @@ nav.solid{
 }
 .btn-race:hover::before{left:100%}
 .btn-race:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(227,0,15,.5)}
-
 .btn-ghost{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.75rem 1.7rem;
@@ -396,10 +372,9 @@ nav.solid{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
 .btn-ghost:hover{border-color:var(--red);color:var(--red);background:rgba(227,0,15,.06)}
-
 /* ════════════════════════════════════════
    TABS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .tabs-nav{
   position:sticky;top:56px;z-index:100;
   background:rgba(10,10,10,.97);backdrop-filter:blur(12px);
@@ -418,14 +393,12 @@ nav.solid{
 }
 .tab-btn.active{color:var(--red);border-bottom-color:var(--red)}
 .tab-btn:hover:not(.active){color:var(--white)}
-
 .tab-panel{display:none;animation:fadeUp .3s ease}
 .tab-panel.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
 /* ════════════════════════════════════════
    SECTIONS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .section-pad{padding:3rem 1.4rem}
 .s-eyebrow{
   font-family:var(--font-head);font-size:.58rem;
@@ -441,10 +414,9 @@ nav.solid{
 }
 .s-title .r{color:var(--red)}
 .s-desc{font-size:.9rem;color:var(--gray);line-height:1.75;margin-bottom:2rem}
-
 /* ════════════════════════════════════════
    TRABAJOS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .works-scroll{
   display:flex;gap:.8rem;overflow-x:auto;
   padding:0 1.4rem 1.2rem;scrollbar-width:none;
@@ -482,7 +454,6 @@ nav.solid{
   padding:.25rem .55rem;
   clip-path:polygon(4px 0,100% 0,calc(100% - 4px) 100%,0 100%);
 }
-
 /* ── GALLERY GRID ── */
 .gallery-9{
   display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
@@ -496,10 +467,9 @@ nav.solid{
   filter:saturate(.8);
 }
 .gallery-9 .g-item:hover img{transform:scale(1.1);filter:saturate(1.2)}
-
 /* ════════════════════════════════════════
    TURNOS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .turno-form{
   background:var(--card);
   border:1px solid var(--border);
@@ -524,7 +494,6 @@ nav.solid{
 select.form-control{background:var(--card)}
 select.form-control option{background:var(--card)}
 textarea.form-control{resize:vertical;min-height:90px}
-
 /* Servicios */
 .servicios-check{display:flex;flex-direction:column;gap:.5rem}
 .serv-opt{
@@ -550,7 +519,6 @@ textarea.form-control{resize:vertical;min-height:90px}
 .serv-info{flex:1}
 .serv-name{font-family:var(--font-head);font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .serv-detail{font-size:.72rem;color:var(--gray)}
-
 /* Calendario */
 .calendario{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin:.6rem 0}
 .cal-head{
@@ -568,7 +536,6 @@ textarea.form-control{resize:vertical;min-height:90px}
 .cal-day.selected{background:var(--red);color:#fff;border-color:var(--red)}
 .cal-day.disabled{color:var(--dim);cursor:default;opacity:.35}
 .cal-day.empty{background:none;border:none;cursor:default}
-
 /* Horarios */
 .horarios{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin:.6rem 0}
 .horario-btn{
@@ -581,7 +548,6 @@ textarea.form-control{resize:vertical;min-height:90px}
 .horario-btn.available:hover{background:rgba(227,0,15,.12);border-color:var(--red);color:var(--red)}
 .horario-btn.selected{background:var(--red);color:#fff;border-color:var(--red)}
 .horario-btn.taken{opacity:.3;cursor:not-allowed;text-decoration:line-through}
-
 /* Confirm */
 .turno-confirm{
   background:var(--card);border:1px solid rgba(227,0,15,.3);
@@ -596,10 +562,9 @@ textarea.form-control{resize:vertical;min-height:90px}
   text-shadow:0 0 30px var(--glow);
 }
 .confirm-msg{font-size:.85rem;color:#bbb;line-height:1.8}
-
 /* ════════════════════════════════════════
    TIENDA
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .store-filter{
   display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;
   padding-bottom:.6rem;margin-bottom:1.5rem;
@@ -616,10 +581,8 @@ textarea.form-control{resize:vertical;min-height:90px}
 }
 .filter-btn.active{background:var(--red);border-color:var(--red);color:#fff}
 .filter-btn:hover:not(.active){border-color:var(--red);color:var(--red)}
-
 .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
 @media(min-width:640px){.products-grid{grid-template-columns:repeat(3,1fr)}}
-
 .product-card{
   background:var(--card);
   border:1px solid var(--border);
@@ -666,7 +629,6 @@ textarea.form-control{resize:vertical;min-height:90px}
   transition:opacity .2s;flex-shrink:0;
 }
 .add-btn:hover{opacity:.85}
-
 /* Cart bar */
 .cart-bar{
   position:fixed;bottom:0;left:0;right:0;z-index:500;
@@ -687,10 +649,9 @@ textarea.form-control{resize:vertical;min-height:90px}
   padding:.5rem 1.3rem;
   clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);
 }
-
 /* ════════════════════════════════════════
    RESEÑAS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .reviews-grid{display:flex;flex-direction:column;gap:.9rem}
 .review-card{
   background:var(--card);
@@ -724,7 +685,6 @@ textarea.form-control{resize:vertical;min-height:90px}
   letter-spacing:.1em;text-transform:uppercase;
   font-family:var(--font-head);
 }
-
 /* Add review */
 .add-review{
   background:var(--card);border:1px solid var(--border);
@@ -740,10 +700,9 @@ textarea.form-control{resize:vertical;min-height:90px}
 .star-pick{color:var(--dim);transition:color .1s,transform .1s}
 .star-pick.lit{color:var(--amber)}
 .star-pick:hover{transform:scale(1.2)}
-
 /* ════════════════════════════════════════
    MODAL
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .modal-overlay{
   position:fixed;inset:0;z-index:2000;
   background:rgba(0,0,0,.92);backdrop-filter:blur(12px);
@@ -773,10 +732,9 @@ textarea.form-control{resize:vertical;min-height:90px}
 .modal-service{font-size:.65rem;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem}
 .modal-img{width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:1rem}
 .modal-details{font-size:.85rem;color:#bbb;line-height:1.8}
-
 /* ════════════════════════════════════════
    MUSIC PLAYER
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 #player{
   position:fixed;bottom:0;left:0;right:0;z-index:600;
   background:rgba(8,8,8,.97);backdrop-filter:blur(20px);
@@ -787,7 +745,6 @@ textarea.form-control{resize:vertical;min-height:90px}
   transition:transform .3s;
 }
 #player.hidden-by-cart{transform:translateY(-56px)}
-
 .player-btn{
   width:36px;height:36px;flex-shrink:0;
   background:linear-gradient(135deg,var(--red),var(--orange));
@@ -798,7 +755,6 @@ textarea.form-control{resize:vertical;min-height:90px}
 }
 .player-btn:hover{transform:scale(1.08);box-shadow:0 0 20px rgba(227,0,15,.5)}
 .player-btn svg{width:14px;height:14px;fill:#fff}
-
 .player-info{flex:1;min-width:0}
 .player-title{
   font-family:var(--font-head);font-size:.68rem;font-weight:600;
@@ -807,7 +763,6 @@ textarea.form-control{resize:vertical;min-height:90px}
   color:var(--white);
 }
 .player-artist{font-size:.58rem;color:var(--gray);letter-spacing:.08em}
-
 .player-progress{
   flex:1;min-width:60px;
   display:flex;flex-direction:column;gap:.3rem;
@@ -831,7 +786,6 @@ textarea.form-control{resize:vertical;min-height:90px}
   letter-spacing:.08em;color:var(--gray);
   display:flex;justify-content:space-between;
 }
-
 /* VU Bars */
 .vu-bars{
   display:flex;align-items:flex-end;gap:2px;height:20px;flex-shrink:0;
@@ -850,10 +804,9 @@ textarea.form-control{resize:vertical;min-height:90px}
   0%{transform:scaleY(.2);opacity:.5}
   100%{transform:scaleY(1);opacity:1}
 }
-
 /* ════════════════════════════════════════
    MINIJUEGOS
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 .game-selector{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.5rem}
 .game-sel-btn{
   background:var(--card);border:2px solid var(--border);
@@ -866,14 +819,12 @@ textarea.form-control{resize:vertical;min-height:90px}
 .game-sel-icon{font-size:1.8rem}
 .game-sel-name{font-family:var(--font-head);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
 .game-sel-desc{font-size:.65rem;color:var(--gray);letter-spacing:.06em}
-
 .game-container{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--red);padding:1.6rem 1.2rem}
 .game-screen{}
 .game-title-big{
   font-family:var(--font-impact);font-size:clamp(2rem,8vw,3rem);
   line-height:1;text-transform:uppercase;text-align:center;margin-bottom:.5rem;
 }
-
 /* TRIVIA */
 .trivia-header{margin-bottom:1.2rem}
 .trivia-progress-wrap{height:4px;background:var(--dim);margin-bottom:.8rem;overflow:hidden}
@@ -910,13 +861,11 @@ textarea.form-control{resize:vertical;min-height:90px}
   min-height:1.4rem;margin-top:.8rem;letter-spacing:.06em;
   transition:opacity .3s;
 }
-
 /* Result screen */
 .game-result-icon{font-size:3.5rem;text-align:center;margin-bottom:.5rem}
 .game-result-title{font-family:var(--font-impact);font-size:2.5rem;text-align:center;color:var(--red);text-transform:uppercase;text-shadow:0 0 30px var(--glow)}
 .game-result-score{font-family:var(--font-impact);font-size:2rem;text-align:center;color:var(--amber);margin:.5rem 0}
 .game-result-msg{font-family:var(--font-body);font-size:.9rem;color:#aaa;text-align:center;line-height:1.7}
-
 /* AHORCADO */
 .ahorcado-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
 .ahorcado-cat{font-family:var(--font-head);font-size:.75rem;letter-spacing:.15em;color:var(--red);text-transform:uppercase}
@@ -955,10 +904,9 @@ textarea.form-control{resize:vertical;min-height:90px}
   font-family:var(--font-impact);font-size:1.5rem;text-align:center;
   text-transform:uppercase;margin-top:.5rem;min-height:2rem;
 }
-
 /* ════════════════════════════════════════
    FOOTER
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 footer{
   background:var(--surface);
   border-top:1px solid var(--border);
@@ -980,10 +928,9 @@ footer{
 }
 .social-link:hover{border-color:var(--red);color:var(--red)}
 .footer-cr{font-size:.62rem;color:var(--dim);letter-spacing:.12em}
-
 /* ════════════════════════════════════════
    RESPONSIVE
-════════════════════════════════════════ */
+   ════════════════════════════════════════ */
 @media(min-width:768px){
   .horarios{grid-template-columns:repeat(6,1fr)}
   .section-pad{padding:4rem 2rem}
@@ -996,10 +943,8 @@ footer{
 <div class="noise"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-
 <!-- AUDIO -->
 <audio id="audio" preload="auto"></audio>
-
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a class="nav-logo" href="#">
@@ -1010,7 +955,6 @@ footer{
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="mobile-menu" id="mobileMenu">
   <a href="#tabs" onclick="switchTab('trabajos');closeMobileMenu()">Trabajos</a>
   <a href="#tabs" onclick="switchTab('turnos');closeMobileMenu()">Turnos</a>
@@ -1019,11 +963,9 @@ footer{
   <a href="#tabs" onclick="switchTab('minijuegos');closeMobileMenu()">🎮 Mini Juegos</a>
   <a href="https://www.instagram.com/elgatonegrocardetail/" target="_blank">Instagram</a>
 </div>
-
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-accent"></div>
-
   <!-- Slideshow BG -->
   <div class="hero-slides" id="heroSlides">
     <div class="hero-slide active" style="background-image:url('img/slide1.jpg')"></div>
@@ -1032,10 +974,8 @@ footer{
     <div class="hero-slide" style="background-image:url('img/slide4.jpg')"></div>
     <div class="hero-slide" style="background-image:url('img/slide5.jpg')"></div>
   </div>
-
   <canvas id="particles-canvas"></canvas>
   <div class="speed-lines"></div>
-
   <!-- Tachometer -->
   <div id="tacho">
     <div class="tacho-label">RPM</div>
@@ -1053,9 +993,7 @@ footer{
       <div class="tacho-dot red" id="td5"></div>
     </div>
   </div>
-
   <div class="hero-strip">CAÑUELAS · BUENOS AIRES · CAR DETAIL · ESTÉTICA VEHICULAR · TOXIC SHINE</div>
-
   <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
     <div class="hero-eyebrow">Estética Vehicular Premium · Cañuelas BA</div>
     <h1 class="hero-h1">
@@ -1071,7 +1009,6 @@ footer{
       </button>
     </div>
   </div>
-
   <div class="slide-dots" id="slideDots">
     <button class="slide-dot active" onclick="goSlide(0)"></button>
     <button class="slide-dot" onclick="goSlide(1)"></button>
@@ -1080,7 +1017,6 @@ footer{
     <button class="slide-dot" onclick="goSlide(4)"></button>
   </div>
 </section>
-
 <!-- ══ STATS ══ -->
 <div class="stats-bar" data-aos="fade-up">
   <div class="stat-cell">
@@ -1096,7 +1032,6 @@ footer{
     <div class="stat-lbl">% Pasión</div>
   </div>
 </div>
-
 <!-- ══ TABS ══ -->
 <div class="tabs-nav" id="tabs" data-aos="fade-up">
   <button class="tab-btn active" onclick="switchTab('trabajos')">🔧 Trabajos</button>
@@ -1105,7 +1040,6 @@ footer{
   <button class="tab-btn" onclick="switchTab('reviews')">⭐ Reseñas</button>
   <button class="tab-btn" onclick="switchTab('minijuegos')">🎮 Juegos</button>
 </div>
-
 <!-- ══ TAB: TRABAJOS ══ -->
 <div class="tab-panel active" id="panel-trabajos">
   <div class="section-pad">
@@ -1113,7 +1047,6 @@ footer{
     <h2 class="s-title">NOS HABLAN<br>LOS <span class="r">AUTOS</span></h2>
     <p class="s-desc">Deslizá para ver cada trabajo. Tocá para los detalles.</p>
   </div>
-
   <div class="works-scroll" id="worksScroll">
     <div class="work-card" onclick="openModal(0)" data-aos="fade-right" data-aos-delay="0">
       <img src="img/slide1.jpg" alt="CAMARO" loading="lazy">
@@ -1171,7 +1104,6 @@ footer{
       <div class="work-badge">DETALLADO</div>
     </div>
   </div>
-
   <!-- Gallery -->
   <div class="section-pad" style="padding-top:2rem">
     <div class="s-eyebrow">Galería</div>
@@ -1189,14 +1121,12 @@ footer{
     </div>
   </div>
 </div>
-
 <!-- ══ TAB: TURNOS ══ -->
 <div class="tab-panel" id="panel-turnos">
   <div class="section-pad">
     <div class="s-eyebrow">Reservas</div>
     <h2 class="s-title">AGENDÁ TU<br><span class="r">TURNO</span></h2>
     <p class="s-desc">Elegí día, horario y servicio. Al confirmar te abrimos WhatsApp con Tomi directo.</p>
-
     <div class="turno-form" id="turnoForm">
       <div class="form-group">
         <label class="form-label">Nombre completo</label>
@@ -1210,53 +1140,92 @@ footer{
         <label class="form-label">Tu auto</label>
         <input class="form-control" type="text" placeholder="Marca, modelo y año" id="clientCar">
       </div>
-
       <div class="form-group">
         <label class="form-label">Servicio que necesitás</label>
         <div class="servicios-check" id="serviciosCheck">
+          <!-- ══════════ NUEVOS SERVICIOS ══════════ -->
+          <!-- Lavado Pre-venta -->
           <label class="serv-opt">
             <div class="serv-chk"></div>
-            <div class="serv-info"><div class="serv-name">Lavado Premium</div><div class="serv-detail">Interior + exterior + aspirado completo</div></div>
+            <div class="serv-info">
+              <div class="serv-name">Lavado Pre-venta</div>
+              <div class="serv-detail">Carrocería, motor, plásticos, gomas, toberas. Opcional: tapizados + ópticas</div>
+            </div>
           </label>
+          <!-- Mantenimiento Premium -->
           <label class="serv-opt">
             <div class="serv-chk"></div>
-            <div class="serv-info"><div class="serv-name">Encerado Carnauba</div><div class="serv-detail">Cera en pasta — protección y brillo profundo</div></div>
+            <div class="serv-info">
+              <div class="serv-name">Mantenimiento Premium</div>
+              <div class="serv-detail">Lavado exterior, acondicionado de plásticos, encerado; interior aspirado, hidratación</div>
+            </div>
           </label>
+          <!-- Limpieza de Interior Completa -->
           <label class="serv-opt">
             <div class="serv-chk"></div>
-            <div class="serv-info"><div class="serv-name">Lavado de Mantenimiento</div><div class="serv-detail">Exterior + aspirado rápido</div></div>
+            <div class="serv-info">
+              <div class="serv-name">Limpieza de Interior Completa</div>
+              <div class="serv-detail">Techo, paneles, tablero, tapizados (tela/cuero), baúl + lavado y encerado exterior</div>
+            </div>
           </label>
+          <!-- Limpieza de motor -->
           <label class="serv-opt">
             <div class="serv-chk"></div>
-            <div class="serv-info"><div class="serv-name">Detailing Interior</div><div class="serv-detail">Limpieza profunda e hidratación de cueros</div></div>
+            <div class="serv-info">
+              <div class="serv-name">Limpieza de motor</div>
+              <div class="serv-detail">Protección eléctrica, desengrase, limpieza manual, secado a presión, acondicionado</div>
+            </div>
           </label>
+          <!-- Tratamiento Cerámico -->
           <label class="serv-opt">
             <div class="serv-chk"></div>
-            <div class="serv-info"><div class="serv-name">Preparación para Evento</div><div class="serv-detail">Detailing completo para exposición o show</div></div>
+            <div class="serv-info">
+              <div class="serv-name">Tratamiento Cerámico</div>
+              <div class="serv-detail">Lavado descontaminante, pulido 3 pasos, sellador cerámico. Incluye interior completo</div>
+            </div>
+          </label>
+          <!-- Tratamiento acrílico -->
+          <label class="serv-opt">
+            <div class="serv-chk"></div>
+            <div class="serv-info">
+              <div class="serv-name">Tratamiento Acrílico</div>
+              <div class="serv-detail">Lavado descontaminante, pulido 80-90%, sellador acrílico (6 meses). Incluye interior completo</div>
+            </div>
+          </label>
+          <!-- Restauración de Ópticas -->
+          <label class="serv-opt">
+            <div class="serv-chk"></div>
+            <div class="serv-info">
+              <div class="serv-name">Restauración de Ópticas</div>
+              <div class="serv-detail">Lijado en pasos, pulido/polímero líquido, sellado cerámico premium</div>
+            </div>
+          </label>
+          <!-- "Consultar servicios adicionales" -->
+          <label class="serv-opt">
+            <div class="serv-chk"></div>
+            <div class="serv-info">
+              <div class="serv-name">Consultar otros servicios</div>
+              <div class="serv-detail">No encuentro lo que necesito, lo hablamos personalizado</div>
+            </div>
           </label>
         </div>
       </div>
-
       <div class="form-group">
-        <label class="form-label">Día — Junio 2025</label>
+        <label class="form-label">Día --- Junio 2025</label>
         <div class="calendario" id="calendario"></div>
       </div>
-
       <div class="form-group" id="horariosGroup" style="display:none">
         <label class="form-label">Horario disponible</label>
         <div class="horarios" id="horariosGrid"></div>
       </div>
-
       <div class="form-group">
         <label class="form-label">Aclaraciones (opcional)</label>
         <textarea class="form-control" rows="3" id="clientNotes" placeholder="Estado del auto, necesidades especiales..."></textarea>
       </div>
-
       <button class="btn-race" style="width:100%;justify-content:center;padding:1rem" onclick="confirmarTurno()">
         🏁 Confirmar Turno
       </button>
     </div>
-
     <div class="turno-confirm" id="turnoConfirm">
       <span class="confirm-icon">🏎️</span>
       <div class="confirm-title">¡Turno Reservado!</div>
@@ -1272,14 +1241,12 @@ footer{
     </div>
   </div>
 </div>
-
 <!-- ══ TAB: TIENDA ══ -->
 <div class="tab-panel" id="panel-tienda">
   <div class="section-pad">
     <div class="s-eyebrow">Tienda Oficial</div>
     <h2 class="s-title">TOXIC <span class="r">SHINE</span></h2>
     <p class="s-desc">Los mismos productos que usamos nosotros. Disponibles en <strong>Justo Eso Shop</strong>, Cañuelas.</p>
-
     <div class="store-filter" id="storeFilter">
       <button class="filter-btn active" onclick="filterProducts('all',this)">Todos</button>
       <button class="filter-btn" onclick="filterProducts('cera',this)">Ceras</button>
@@ -1288,11 +1255,9 @@ footer{
       <button class="filter-btn" onclick="filterProducts('degreaser',this)">Desengrasante</button>
       <button class="filter-btn" onclick="filterProducts('sellador',this)">Selladores</button>
     </div>
-
     <div class="products-grid" id="productsGrid"></div>
   </div>
 </div>
-
 <!-- ══ TAB: RESEÑAS ══ -->
 <div class="tab-panel" id="panel-reviews">
   <div class="section-pad">
@@ -1300,7 +1265,6 @@ footer{
     <h2 class="s-title">RESEÑAS <span class="r">REALES</span></h2>
     <p class="s-desc">Cada estrella ganada con trabajo honesto.</p>
     <div class="reviews-grid" id="reviewsGrid"></div>
-
     <div class="add-review" style="margin-top:2rem">
       <div class="add-review-title">¿Fuiste cliente?<br><span>Dejá tu reseña</span></div>
       <div class="form-group">
@@ -1331,14 +1295,12 @@ footer{
     </div>
   </div>
 </div>
-
 <!-- ══ TAB: MINIJUEGOS ══ -->
 <div class="tab-panel" id="panel-minijuegos">
   <div class="section-pad">
     <div class="s-eyebrow">Mini Juegos</div>
     <h2 class="s-title">ZONA <span class="r">GAMER</span></h2>
     <p class="s-desc">¿Cuánto sabés de autos y Rápido & Furioso? Poné a prueba tu conocimiento.</p>
-
     <!-- Selector de juego -->
     <div class="game-selector">
       <button class="game-sel-btn active" onclick="selectGame('trivia',this)">
@@ -1352,7 +1314,6 @@ footer{
         <span class="game-sel-desc">Autos & Detailing</span>
       </button>
     </div>
-
     <!-- ── TRIVIA ── -->
     <div id="game-trivia" class="game-container">
       <div id="trivia-start" class="game-screen">
@@ -1387,7 +1348,6 @@ footer{
         </button>
       </div>
     </div>
-
     <!-- ── AHORCADO ── -->
     <div id="game-ahorcado" class="game-container" style="display:none">
       <div id="ahorcado-ui">
@@ -1421,10 +1381,8 @@ footer{
         </button>
       </div>
     </div>
-
   </div>
 </div>
-
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal">
@@ -1441,13 +1399,11 @@ footer{
     </div>
   </div>
 </div>
-
 <!-- CART BAR -->
 <div class="cart-bar" id="cartBar">
   <div class="cart-info">🛒 <span id="cartCount">0</span> productos · $<span id="cartTotal">0</span></div>
   <button class="cart-checkout" onclick="checkout()">WhatsApp 💬</button>
 </div>
-
 <!-- MUSIC PLAYER (Playlist) -->
 <div id="player">
   <!-- Play/Pause -->
@@ -1462,7 +1418,6 @@ footer{
   <button class="player-btn" onclick="nextTrack()" style="background: var(--dim); box-shadow: none;">
     <svg viewBox="0 0 24 24" width="14" height="14" fill="#fff"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
   </button>
-
   <div class="player-info">
     <div class="player-title" id="playerTitle">Funky G · Diagnóstico Groove</div>
     <div class="player-artist">El Gato Negro Radio 🐾</div>
@@ -1484,7 +1439,6 @@ footer{
     <div class="vu-bar"></div>
   </div>
 </div>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">EL GATO <span>NEGRO</span></div>
@@ -1511,10 +1465,8 @@ footer{
   </div>
   <div class="footer-cr">© 2025 El Gato Negro Car Detail · Tomi · +54 11 6886-8528</div>
 </footer>
-
 <!-- AOS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
 <script>
 // ══════════════════════════════════════
 // AOS
@@ -1525,7 +1477,6 @@ AOS.init({
   once:true,
   offset:60
 });
-
 // ══════════════════════════════════════
 // CURSOR
 // ══════════════════════════════════════
@@ -1540,18 +1491,15 @@ if(window.matchMedia('(pointer:fine)').matches){
     el.addEventListener('mouseleave',()=>{ring.style.width='32px';ring.style.height='32px'});
   });
 }
-
 // ══════════════════════════════════════
 // NAV
 // ══════════════════════════════════════
 window.addEventListener('scroll',()=>{
   document.getElementById('mainNav').classList.toggle('solid',window.scrollY>40);
 },{passive:true});
-
 const ham=document.getElementById('hamburger'),mmenu=document.getElementById('mobileMenu');
 ham.addEventListener('click',()=>{ham.classList.toggle('open');mmenu.classList.toggle('open')});
 function closeMobileMenu(){ham.classList.remove('open');mmenu.classList.remove('open')}
-
 // ══════════════════════════════════════
 // HERO SLIDESHOW
 // ══════════════════════════════════════
@@ -1562,7 +1510,6 @@ function goSlide(n){
   curSlide=n;slides[curSlide].classList.add('active');dots[curSlide].classList.add('active');
 }
 setInterval(()=>goSlide((curSlide+1)%slides.length),4500);
-
 // ══════════════════════════════════════
 // PARTICLES (canvas - lightweight)
 // ══════════════════════════════════════
@@ -1570,12 +1517,10 @@ setInterval(()=>goSlide((curSlide+1)%slides.length),4500);
   const canvas=document.getElementById('particles-canvas');
   const ctx=canvas.getContext('2d');
   let W,H,particles=[];
-
   function resize(){
     W=canvas.width=canvas.offsetWidth;
     H=canvas.height=canvas.offsetHeight;
   }
-
   function Particle(){
     this.reset=function(){
       this.x=Math.random()*W;
@@ -1589,14 +1534,12 @@ setInterval(()=>goSlide((curSlide+1)%slides.length),4500);
     this.reset();
     this.y=Math.random()*H;
   }
-
   function init(){
     resize();
     particles=[];
     const count=Math.min(60,Math.floor(W/12));
     for(let i=0;i<count;i++){particles.push(new Particle())}
   }
-
   function draw(){
     ctx.clearRect(0,0,W,H);
     particles.forEach(p=>{
@@ -1609,11 +1552,9 @@ setInterval(()=>goSlide((curSlide+1)%slides.length),4500);
     });
     requestAnimationFrame(draw);
   }
-
   window.addEventListener('resize',init,{passive:true});
   init();draw();
 })();
-
 // ══════════════════════════════════════
 // TACHOMETER
 // ══════════════════════════════════════
@@ -1621,7 +1562,6 @@ setInterval(()=>goSlide((curSlide+1)%slides.length),4500);
   const rpmEl=document.getElementById('tachoRPM');
   const needle=document.getElementById('tachoNeedle');
   const redDots=[document.getElementById('td4'),document.getElementById('td5')];
-
   function updateTacho(){
     const rpm=Math.floor(Math.random()*4000)+4500;
     const pct=(rpm-0)/9000;
@@ -1632,11 +1572,9 @@ setInterval(()=>goSlide((curSlide+1)%slides.length),4500);
     rpmEl.style.color=redline?'#ffb400':'var(--red)';
     redDots.forEach(d=>d.style.background=redline?'#ffb400':'var(--red)');
   }
-
   updateTacho();
   setInterval(updateTacho,1200);
 })();
-
 // ══════════════════════════════════════
 // STATS COUNTER
 // ══════════════════════════════════════
@@ -1659,7 +1597,6 @@ const statsObs=new IntersectionObserver(en=>{
   });
 });
 statsObs.observe(document.querySelector('.stats-bar'));
-
 // ══════════════════════════════════════
 // TABS
 // ══════════════════════════════════════
@@ -1668,7 +1605,6 @@ function switchTab(name){
   document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',order[i]===name));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+name));
 }
-
 // ══════════════════════════════════════
 // MODAL
 // ══════════════════════════════════════
@@ -1685,7 +1621,6 @@ const carData=[
   {car:'DODGE RAM',svc:'Lavado de Mantenimiento',img:'img/car_ram.jpg',details:'Dodge Ram 0km con Lavado de Mantenimiento. Un clásico americano que merece el mejor cuidado.'},
   {car:'HONDA HR-V',svc:'Lavado Detallado',img:'img/car_hrv.jpg',details:'Honda HR-V con lavado detallado de carrocería. Acabado impecable con productos Toxic Shine.'},
 ];
-
 function openModal(i){
   const d=carData[i];
   document.getElementById('modalCar').textContent=d.car;
@@ -1701,7 +1636,6 @@ function closeModal(e){
     document.body.style.overflow='';
   }
 }
-
 // ══════════════════════════════════════
 // CALENDARIO
 // ══════════════════════════════════════
@@ -1711,7 +1645,6 @@ const calEl=document.getElementById('calendario');
 });
 const startDay=0,totalDays=30;
 for(let i=0;i<startDay;i++){const e=document.createElement('div');e.className='cal-day empty';calEl.appendChild(e)}
-
 let selectedDay=null;
 for(let d=1;d<=totalDays;d++){
   const e=document.createElement('div');
@@ -1726,7 +1659,6 @@ for(let d=1;d<=totalDays;d++){
   }
   calEl.appendChild(e);
 }
-
 function showHorarios(){
   const g=document.getElementById('horariosGrid');
   document.getElementById('horariosGroup').style.display='block';
@@ -1746,11 +1678,9 @@ function showHorarios(){
     g.appendChild(b);
   });
 }
-
 document.querySelectorAll('.serv-opt').forEach(opt=>{
   opt.addEventListener('click',()=>opt.classList.toggle('selected'));
 });
-
 function confirmarTurno(){
   const name=document.getElementById('clientName').value.trim();
   const phone=document.getElementById('clientPhone').value.trim();
@@ -1760,11 +1690,10 @@ function confirmarTurno(){
   if(!name||!phone||!car||!selectedDay||!selHor||!srvs.length){
     alert('Completá todos los campos: nombre, teléfono, auto, servicio, día y horario.');return;
   }
-  const msg=`✅ ¡Turno reservado!\n\nHola Tomi! Quiero reservar un turno 🏁\nNombre: ${name}\nAuto: ${car}\nDía: ${selectedDay} de Junio · ${selHor.textContent}\nServicio: ${srvs.join(', ')}\nTeléfono: ${phone}`;
-  document.getElementById('confirmMsg').innerHTML=msg.replace(/\n/g,'<br>');
+  const msg=`✅ ¡Turno reservado!\\n\\nHola Tomi! Quiero reservar un turno 🏁\\nNombre: ${name}\\nAuto: ${car}\\nDía: ${selectedDay} de Junio · ${selHor.textContent}\\nServicio: ${srvs.join(', ')}\\nTeléfono: ${phone}`;
+  document.getElementById('confirmMsg').innerHTML=msg.replace(/\\n/g,'<br>');
   document.getElementById('turnoForm').style.display='none';
   document.getElementById('turnoConfirm').classList.add('show');
-
   // ── Generar link Google Calendar ──
   const [hh,mm]=selHor.textContent.split(':').map(Number);
   const year=2026;const month=6; // Junio
@@ -1772,16 +1701,14 @@ function confirmarTurno(){
   const dtStart=`${year}${pad(month)}${pad(selectedDay)}T${pad(hh)}${pad(mm)}00`;
   const dtEnd=`${year}${pad(month)}${pad(selectedDay)}T${pad(hh+2)}${pad(mm)}00`;
   const gcTitle=encodeURIComponent(`El Gato Negro Car Detail - ${srvs.join(' + ')}`);
-  const gcDetails=encodeURIComponent(`Auto: ${car}\nServicio: ${srvs.join(', ')}\nContacto: +54 11 6886-8528 (Tomi)`);
+  const gcDetails=encodeURIComponent(`Auto: ${car}\\nServicio: ${srvs.join(', ')}\\nContacto: +54 11 6886-8528 (Tomi)`);
   const gcLocation=encodeURIComponent('El Gato Negro Car Detail, Cañuelas, Buenos Aires');
   const gcUrl=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gcTitle}&dates=${dtStart}/${dtEnd}&details=${gcDetails}&location=${gcLocation}`;
   document.getElementById('gcalLink').href=gcUrl;
-
   setTimeout(()=>window.open('https://wa.me/541168868528?text='+encodeURIComponent(
-    `Hola Tomi! Quiero reservar un turno 🏁\nNombre: ${name}\nAuto: ${car}\nDía: ${selectedDay} de Junio · ${selHor.textContent}\nServicio: ${srvs.join(', ')}\nTeléfono: ${phone}`
+    `Hola Tomi! Quiero reservar un turno 🏁\\nNombre: ${name}\\nAuto: ${car}\\nDía: ${selectedDay} de Junio · ${selHor.textContent}\\nServicio: ${srvs.join(', ')}\\nTeléfono: ${phone}`
   ),'_blank'),900);
 }
-
 // ══════════════════════════════════════
 // TIENDA
 // ══════════════════════════════════════
@@ -1795,9 +1722,7 @@ const products=[
   {id:7,name:'The Bo Sellador',brand:'Toxic Shine',cat:'sellador',price:'$6.500',desc:'Sellador diseñado para proteger la pintura del ambiente y UV.',badge:'',img:'img/prod_thebo.jpg'},
   {id:8,name:'Watermelon',brand:'Toxic Shine',cat:'cera',price:'$4.200',desc:'Resalta la profundidad del color y el brillo. Fragancia watermelon.',badge:'AROMA',img:'img/prod_watermelon.jpg'},
 ];
-
 let cart={};
-
 function renderProducts(filter='all'){
   const grid=document.getElementById('productsGrid');
   const list=filter==='all'?products:products.filter(p=>p.cat===filter);
@@ -1820,13 +1745,11 @@ function renderProducts(filter='all'){
   `).join('');
   AOS.refresh();
 }
-
 function filterProducts(cat,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderProducts(cat);
 }
-
 function addToCart(id){
   cart[id]=(cart[id]||0)+1;updateCart();
 }
@@ -1846,12 +1769,10 @@ function checkout(){
   const items=Object.entries(cart).map(([id,qty])=>{
     const p=products.find(x=>x.id==id);
     return `${qty}x ${p.name} (${p.price})`;
-  }).join('\n');
-  window.open(`https://wa.me/541168868528?text=${encodeURIComponent('Hola Tomi! Quiero consultar por estos productos Toxic Shine:\n'+items)}`, '_blank');
+  }).join('\\n');
+  window.open(`https://wa.me/541168868528?text=${encodeURIComponent('Hola Tomi! Quiero consultar por estos productos Toxic Shine:\\n'+items)}`, '_blank');
 }
-
 renderProducts();
-
 // ══════════════════════════════════════
 // RESEÑAS
 // ══════════════════════════════════════
@@ -1863,7 +1784,6 @@ const reviews=[
   {name:'Diego P.',car:'BMW Serie 3',stars:5,text:'El mejor detailing de Cañuelas sin dudas. Usaron Toxic Shine en todo y el resultado es increíble.',source:'Google'},
 ];
 let userReviews=[],starRating=0;
-
 function renderReviews(){
   document.getElementById('reviewsGrid').innerHTML=[...reviews,...userReviews].map(r=>`
     <div class="review-card" data-aos="fade-up">
@@ -1881,7 +1801,6 @@ function renderReviews(){
   `).join('');
   AOS.refresh();
 }
-
 document.querySelectorAll('.star-pick').forEach(s=>{
   s.addEventListener('mouseover',()=>{
     const v=+s.dataset.v;
@@ -1895,7 +1814,6 @@ document.querySelectorAll('.star-pick').forEach(s=>{
 document.getElementById('starPicker').addEventListener('mouseleave',()=>{
   document.querySelectorAll('.star-pick').forEach(x=>x.classList.toggle('lit',+x.dataset.v<=starRating));
 });
-
 function submitReview(){
   const name=document.getElementById('rvName').value.trim();
   const car=document.getElementById('rvCar').value.trim();
@@ -1907,9 +1825,7 @@ function submitReview(){
   starRating=0;
   document.querySelectorAll('.star-pick').forEach(x=>x.classList.remove('lit'));
 }
-
 renderReviews();
-
 // ══════════════════════════════════════
 // MUSIC PLAYER (Playlist)
 // ══════════════════════════════════════
@@ -1920,15 +1836,11 @@ const timeNow = document.getElementById('timeNow');
 const timeTot = document.getElementById('timeTot');
 const vuBars = document.querySelectorAll('.vu-bar');
 const playerTitle = document.getElementById('playerTitle');
-
-// Definir las pistas (usá los nombres de archivo que subiste)
 const tracks = [
   { src: 'music/funkyg.mp3', title: 'Funky G · Diagnóstico Groove' },
   { src: 'music/teriyaakiboys.mp3', title: 'Teri Yaaki Boys' }
 ];
-
 let currentTrack = 0;
-
 function loadTrack(index) {
   if (index < 0 || index >= tracks.length) return;
   currentTrack = index;
@@ -1941,17 +1853,14 @@ function loadTrack(index) {
   playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
   vuBars.forEach(b => b.classList.remove('playing'));
 }
-
 function nextTrack() {
   const next = (currentTrack + 1) % tracks.length;
   loadTrack(next);
 }
-
 function prevTrack() {
   const prev = (currentTrack - 1 + tracks.length) % tracks.length;
   loadTrack(prev);
 }
-
 function togglePlay() {
   if (audio.paused) {
     const playPromise = audio.play();
@@ -1970,46 +1879,38 @@ function togglePlay() {
     vuBars.forEach(b => b.classList.remove('playing'));
   }
 }
-
 function fmt(seconds) {
   if (isNaN(seconds)) return '0:00';
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
-
 audio.addEventListener('timeupdate', () => {
   if (!audio.duration) return;
   const pct = (audio.currentTime / audio.duration) * 100;
   progressFill.style.width = pct + '%';
   timeNow.textContent = fmt(audio.currentTime);
 });
-
 audio.addEventListener('loadedmetadata', () => {
   timeTot.textContent = fmt(audio.duration);
 });
-
 audio.addEventListener('ended', () => {
   nextTrack();
   togglePlay(); // inicia automáticamente la siguiente
 });
-
 audio.addEventListener('error', (e) => {
   console.error('Error al cargar el audio:', e.target.error);
   alert(`⚠️ No se pudo cargar la pista "${tracks[currentTrack].title}". Verificá que el archivo ${tracks[currentTrack].src} exista en el servidor.`);
 });
-
 function seekAudio(e) {
   const bar = document.getElementById('progressBar');
   const pct = e.offsetX / bar.offsetWidth;
   audio.currentTime = pct * audio.duration;
 }
-
 // Cargar la primera pista
 loadTrack(0);
-
 // ══════════════════════════════════════
-// MINIJUEGOS — Selector
+// MINIJUEGOS --- Selector
 // ══════════════════════════════════════
 function selectGame(name,btn){
   document.querySelectorAll('.game-sel-btn').forEach(b=>b.classList.remove('active'));
@@ -2017,7 +1918,6 @@ function selectGame(name,btn){
   document.getElementById('game-trivia').style.display=name==='trivia'?'block':'none';
   document.getElementById('game-ahorcado').style.display=name==='ahorcado'?'block':'none';
 }
-
 // ══════════════════════════════════════
 // TRIVIA
 // ══════════════════════════════════════
@@ -2031,13 +1931,11 @@ const triviaQuestions=[
   {q:'¿Qué auto maneja Brian O\'Conner en la primera película?',opts:['Toyota Supra MK4','Mitsubishi Eclipse','Honda Civic','Mazda RX-7'],a:1,fact:'El Mitsubishi Eclipse verde de Brian es legendario en la saga.'},
   {q:'¿Para qué sirve la cera Carnauba en el detailing?',opts:['Limpiar el interior','Proteger y dar brillo a la pintura','Desengrasante de motor','Cristalizar vidrios'],a:1,fact:'La cera carnauba proviene de una palma brasileña y es la más usada en detailing premium.'},
   {q:'¿En cuántas películas principales de la saga aparece el personaje Dom Toretto?',opts:['7','8','9','10'],a:3,fact:'Dom aparece desde la primera (2001) hasta la décima (2023) película.'},
-  {q:'¿Qué es el APC en el mundo del detailing?',opts:['All Purpose Cleaner — limpiador universal','Auto Polish Compound','Advanced Paint Coating','Air Pressure Cleaner'],a:0,fact:'El APC (All Purpose Cleaner) limpia cualquier superficie del auto, interior y exterior.'},
+  {q:'¿Qué es el APC en el mundo del detailing?',opts:['All Purpose Cleaner --- limpiador universal','Auto Polish Compound','Advanced Paint Coating','Air Pressure Cleaner'],a:0,fact:'El APC (All Purpose Cleaner) limpia cualquier superficie del auto, interior y exterior.'},
   {q:'¿Cuál fue el primer Auto de Paul Walker en "Rápido y Furioso" 2001?',opts:['Mitsubishi Lancer','Honda Civic EG 1995','Dodge Charger','Ford Focus'],a:1,fact:'El Honda Civic blanco de Brian en la primera escena del film es un clásico.'},
   {q:'¿Qué significa "drift" en el automovilismo?',opts:['Acelerar al máximo en línea recta','Técnica de sobreviro controlado en curvas','Frenada de emergencia','Cambio de marchas ultrarrápido'],a:1,fact:'El drift es la técnica japonesa de conducir de costado con el auto sobrevirando.'},
 ];
-
 let triviaPool=[],triviaIdx=0,triviaScore=0,triviaTimer=null,triviaTime=15;
-
 function startTrivia(){
   triviaPool=[...triviaQuestions].sort(()=>Math.random()-.5).slice(0,10);
   triviaIdx=0;triviaScore=0;
@@ -2046,7 +1944,6 @@ function startTrivia(){
   document.getElementById('trivia-play').style.display='block';
   showTriviaQuestion();
 }
-
 function showTriviaQuestion(){
   if(triviaIdx>=triviaPool.length){endTrivia();return;}
   const q=triviaPool[triviaIdx];
@@ -2071,7 +1968,6 @@ function showTriviaQuestion(){
     if(triviaTime<=0){clearInterval(triviaTimer);answerTrivia(-1);}
   },1000);
 }
-
 function answerTrivia(idx){
   clearInterval(triviaTimer);
   const q=triviaPool[triviaIdx];
@@ -2086,7 +1982,7 @@ function answerTrivia(idx){
     triviaScore++;
     fb.style.color='#00ff88';
     fb.textContent='✅ ¡Correcto! '+q.fact;
-  } else if(idx===-1){
+  } else if(idx==-1){
     fb.style.color='var(--orange)';
     fb.textContent='⏱️ Tiempo! '+q.fact;
   } else {
@@ -2097,7 +1993,6 @@ function answerTrivia(idx){
   triviaIdx++;
   setTimeout(showTriviaQuestion,2200);
 }
-
 function endTrivia(){
   document.getElementById('trivia-play').style.display='none';
   document.getElementById('trivia-end').style.display='block';
@@ -2114,7 +2009,6 @@ function endTrivia(){
   document.getElementById('triviaResultTitle').textContent=title;
   document.getElementById('triviaResultMsg').textContent=msg;
 }
-
 // ══════════════════════════════════════
 // AHORCADO
 // ══════════════════════════════════════
@@ -2135,10 +2029,8 @@ const ahorcadoWords=[
   {word:'FAMILIA',hint:'La palabra favorita de Dom Toretto ❤️',cat:'🏎️ F&F'},
   {word:'DEGREASER',hint:'Desengrasante para limpiar el motor y zonas difíciles',cat:'🧴 Detailing'},
 ];
-
 const bodyParts=['h-head','h-body','h-larm','h-rarm','h-lleg','h-rleg'];
 let ahWord='',ahGuessed=[],ahWrong=0,ahMax=6;
-
 function initAhorcado(){
   const data=ahorcadoWords[Math.floor(Math.random()*ahorcadoWords.length)];
   ahWord=data.word.toUpperCase();
@@ -2153,12 +2045,10 @@ function initAhorcado(){
   renderAhorcadoKeyboard();
   document.getElementById('ahorcadoUsed').textContent='';
 }
-
 function renderAhorcadoLives(){
   const lives=ahMax-ahWrong;
   document.getElementById('ahorcadoLives').textContent='❤️'.repeat(lives)+'🖤'.repeat(ahWrong);
 }
-
 function renderAhorcadoWord(){
   const el=document.getElementById('ahorcadoWord');
   el.innerHTML=ahWord.split('').map(ch=>{
@@ -2167,7 +2057,6 @@ function renderAhorcadoWord(){
     return `<div class="ahorcado-letter${revealed?' revealed':''}">${revealed?ch:''}</div>`;
   }).join('');
 }
-
 function renderAhorcadoKeyboard(){
   const kb=document.getElementById('ahorcadoKeyboard');
   const letters='ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
@@ -2176,7 +2065,6 @@ function renderAhorcadoKeyboard(){
       ${ahGuessed.includes(l)?'disabled':''} onclick="guessLetter('${l}')">${l}</button>
   `).join('');
 }
-
 function guessLetter(letter){
   if(ahGuessed.includes(letter))return;
   ahGuessed.push(letter);
@@ -2198,25 +2086,4 @@ function guessLetter(letter){
   const won=ahWord.split('').every(ch=>ch===' '||ahGuessed.includes(ch));
   if(won){
     msg.style.color='#00ff88';
-    msg.textContent='🏆 ¡LO LOGRASTE!';
-    document.querySelectorAll('.ahorcado-key').forEach(k=>k.disabled=true);
-  } else if(ahWrong>=ahMax){
-    msg.style.color='var(--red)';
-    msg.textContent='💀 Era: '+ahWord;
-    document.querySelectorAll('.ahorcado-key').forEach(k=>k.disabled=true);
-  }
-}
-
-// Inicializar ahorcado al cargar
-initAhorcado();
-
-// ══════════════════════════════════════
-// REVEAL (fallback for non-AOS items)
-// ══════════════════════════════════════
-const revObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});
-},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
-</script>
-</body>
-</html>
+    msg.textContent='🏆 ¡LO LOGRASTE!
