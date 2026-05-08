@@ -16,7 +16,6 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://gatonegrocardetail.com/">
 
-<!-- Schema JSON-LD -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":["AutomotiveBusiness","LocalBusiness"],"@id":"https://gatonegrocardetail.com/#business","name":"El Gato Negro Car Detail","description":"Servicio profesional de car detail y estética vehicular en Cañuelas, Buenos Aires.","url":"https://gatonegrocardetail.com/","telephone":"+541168868528","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Cañuelas","addressRegion":"Buenos Aires","addressCountry":"AR","postalCode":"7130"},"geo":{"@type":"GeoCoordinates","latitude":-35.0522,"longitude":-58.7563},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}],"sameAs":["https://www.instagram.com/elgatonegrocardetail/","https://wa.me/541168868528"]}
 </script>
@@ -113,7 +112,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
   to{transform:rotate(360deg)}
 }
 
-/* Logo neón */
 .logo-gato-negro{
   width:100%;max-width:250px;
   filter:drop-shadow(0 0 10px rgba(227,0,15,.6));
@@ -131,7 +129,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
   100%{filter:drop-shadow(0 0 15px rgba(227,0,15,.8))}
 }
 
-/* Texto cromado */
 .text-chrome{
   background:linear-gradient(to bottom,#f0f0f0 0%,#ffffff 25%,#888888 48%,#111111 50%,#cccccc 70%,#f8f8f8 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
@@ -183,25 +180,57 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .mobile-menu a:hover{color:var(--red)}
 
 /* ════════════════════════════════════════
-   HERO
+   HERO — con imagen de fondo
 ════════════════════════════════════════ */
 .hero{
   position:relative;min-height:100dvh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:5rem 1.2rem 3rem;overflow:hidden;
 }
-.hero-video{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:.18;z-index:0;
+
+/* ── IMAGEN DE FONDO DEL AUTO ── */
+.hero-bg-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  background-image:url('img/autoherofondo.png');
+  background-size:cover;
+  background-position:center 40%;
+  background-repeat:no-repeat;
+  /* Ken Burns suave */
+  animation:heroBgZoom 18s ease-in-out infinite alternate;
+  z-index:0;
 }
+@keyframes heroBgZoom{
+  0%  { transform:scale(1)    translateX(0);    background-position:center 40%; }
+  50% { transform:scale(1.06) translateX(-1%);  background-position:60% 42%; }
+  100%{ transform:scale(1.04) translateX(1%);   background-position:40% 38%; }
+}
+
+/* Overlay con viñeta dramática + gradiente inferior */
 .hero-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(8,8,8,.3) 0%,rgba(8,8,8,.6) 60%,var(--black) 100%);
+  background:
+    radial-gradient(ellipse at center, transparent 30%, rgba(8,8,8,.7) 100%),
+    linear-gradient(180deg,
+      rgba(8,8,8,.45) 0%,
+      rgba(8,8,8,.2) 35%,
+      rgba(8,8,8,.55) 65%,
+      rgba(8,8,8,.95) 100%
+    );
   z-index:1;
 }
+
+/* Barra roja diagonal decorativa */
+.hero-accent-bar{
+  position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, transparent, var(--red) 30%, var(--red) 70%, transparent);
+  z-index:5;
+  box-shadow:0 0 20px var(--glow);
+}
+
 .scanlines{
   position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);
 }
 #particles-js{position:absolute;inset:0;z-index:3}
 .hero-content{position:relative;z-index:4;max-width:700px;width:100%}
@@ -350,7 +379,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:none;transition:background .2s,transform .2s}
 .dot.active{background:var(--red);transform:scale(1.4)}
 
-/* Modal galería */
 .gallery-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:3px;
   padding:0 1.2rem 1.5rem;
@@ -360,7 +388,7 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .gallery-item:hover img{transform:scale(1.08);filter:brightness(1.15)}
 
 /* ════════════════════════════════════════
-   SERVICIOS (dentro del slider info)
+   SERVICIOS
 ════════════════════════════════════════ */
 .services-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
@@ -400,7 +428,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .serv-opt .serv-name{font-family:var(--font-head);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .serv-opt .serv-price-s{font-family:var(--font-display);font-size:.95rem;color:var(--red)}
 
-/* Calendario */
 .cal-header{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0;margin-bottom:.5rem}
 .cal-title{font-family:var(--font-display);font-size:1.1rem;letter-spacing:.05em}
 .cal-nav{background:none;border:1px solid var(--border);color:var(--white);width:28px;height:28px;cursor:none;font-size:.9rem;transition:border-color .2s}
@@ -426,7 +453,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .horario-btn.selected{background:var(--red);border-color:var(--red);color:#fff}
 .horario-btn:hover:not(.selected){border-color:var(--red);color:var(--white)}
 
-/* Confirmación */
 .turno-confirm{
   background:var(--card);border:1px solid var(--border);border-top:2px solid var(--red);
   padding:2rem 1.2rem;text-align:center;display:none;
@@ -471,7 +497,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .game-container{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--red);padding:1.6rem 1.2rem}
 .game-title-big{font-family:var(--font-impact);font-size:clamp(2rem,8vw,3rem);line-height:1;text-transform:uppercase;text-align:center;margin-bottom:.5rem}
 
-/* Trivia */
 .trivia-header{margin-bottom:1.2rem}
 .trivia-progress-wrap{height:4px;background:var(--dim);margin-bottom:.8rem;overflow:hidden}
 .trivia-progress-bar{height:100%;background:linear-gradient(90deg,var(--red),var(--orange));width:10%;transition:width .3s}
@@ -499,7 +524,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .game-result-score{font-family:var(--font-impact);font-size:2rem;text-align:center;color:var(--amber);margin:.5rem 0}
 .game-result-msg{font-family:var(--font-body);font-size:.9rem;color:#aaa;text-align:center;line-height:1.7}
 
-/* Ahorcado */
 .ahorcado-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
 .ahorcado-cat{font-family:var(--font-head);font-size:.75rem;letter-spacing:.15em;color:var(--red);text-transform:uppercase}
 .ahorcado-lives{font-size:1.1rem;letter-spacing:.05em}
@@ -547,7 +571,7 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 .detail-item::before{content:'▸';color:var(--red);font-size:.6rem}
 
 /* ════════════════════════════════════════
-   MUSIC PLAYER
+   MUSIC PLAYER — mejorado
 ════════════════════════════════════════ */
 .music-bar{
   position:fixed;bottom:0;left:0;right:0;z-index:800;
@@ -609,11 +633,18 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
   animation:waPulse 2.5s infinite;
 }
 @keyframes waPulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.3)}50%{box-shadow:0 4px 28px rgba(37,211,102,.6)}}
+
+/* ════════════════════════════════════════
+   RESPONSIVE NAV
+════════════════════════════════════════ */
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
 </style>
 </head>
 <body>
 
-<!-- Custom cursor -->
 <div id="cursor"></div>
 <div id="cursorTrail"></div>
 
@@ -636,7 +667,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
   </button>
 </nav>
 
-<!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#tabs" onclick="switchTab('trabajos');closeMobileMenu()">Trabajos</a>
   <a href="#tabs" onclick="switchTab('turnos');closeMobileMenu()">Turnos</a>
@@ -647,11 +677,12 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="hero">
-  <video class="hero-video" autoplay muted loop playsinline>
-    <source src="video/hero_bg.mp4" type="video/mp4">
-  </video>
+
+  <!-- Imagen de fondo del auto -->
+  <div class="hero-bg-img"></div>
   <div class="hero-overlay"></div>
   <div class="scanlines"></div>
+  <div class="hero-accent-bar"></div>
   <div id="particles-js"></div>
 
   <div class="hero-content">
@@ -711,7 +742,7 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
     <button class="tab-btn" onclick="switchTab('minijuegos')">🎮 Juegos</button>
   </div>
 
-  <!-- ══ TAB: TRABAJOS ══ -->
+  <!-- TAB: TRABAJOS -->
   <div class="tab-panel active" id="panel-trabajos">
     <div class="section-pad">
       <div class="s-eyebrow">Portfolio</div>
@@ -719,10 +750,8 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
       <p class="s-desc">Deslizá para ver cada trabajo. Tocá para los detalles.</p>
     </div>
 
-    <!-- Slider principal -->
     <div class="slider-wrap" id="mainSlider">
       <div class="slider-track" id="sliderTrack">
-
         <div class="slide" onclick="openModal(0)">
           <img src="img/slide1.jpg" alt="Chevrolet Camaro — Lavado Premium" loading="lazy">
           <div class="slide-info">
@@ -732,7 +761,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
           </div>
           <div class="slide-counter" id="slideCounter">1 / 4</div>
         </div>
-
         <div class="slide" onclick="openModal(1)">
           <img src="img/slide2.jpg" alt="Ford Bronco — Preparación Evento" loading="lazy">
           <div class="slide-info">
@@ -741,7 +769,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
             <div class="slide-sub">Detailing exhaustivo · Exposición</div>
           </div>
         </div>
-
         <div class="slide" onclick="openModal(2)">
           <img src="img/slide3.jpg" alt="Ford Raptor — Lavado Premium" loading="lazy">
           <div class="slide-info">
@@ -750,7 +777,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
             <div class="slide-sub">Exterior + Interior desinfectado</div>
           </div>
         </div>
-
         <div class="slide" onclick="openModal(3)">
           <img src="img/slide4.jpg" alt="Audi TT — Encerado Carnauba" loading="lazy">
           <div class="slide-info">
@@ -759,9 +785,7 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
             <div class="slide-sub">Carnauba en pasta · Cueros hidratados</div>
           </div>
         </div>
-
       </div>
-
       <button class="slider-prev" onclick="slideMove(-1)">‹</button>
       <button class="slider-next" onclick="slideMove(1)">›</button>
     </div>
@@ -773,56 +797,22 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
       <div class="dot" onclick="slideTo(3)"></div>
     </div>
 
-    <!-- Servicios -->
     <div class="section-pad">
       <div class="s-eyebrow">Lo que hacemos</div>
       <h2 class="s-title">NUESTROS <span class="r">SERVICIOS</span></h2>
     </div>
 
     <div class="services-grid">
-      <div class="serv-card" data-aos="fade-up">
-        <div class="serv-icon">🚿</div>
-        <div class="serv-name-h">Lavado Premium</div>
-        <div class="serv-desc-p">Exterior a mano + interior completo + aspirado + desinfección. Productos Toxic Shine.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="50">
-        <div class="serv-icon">✨</div>
-        <div class="serv-name-h">Encerado Carnauba</div>
-        <div class="serv-desc-p">Cera Carnauba en pasta para protección y brillo profundo de larga duración.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="serv-icon">💧</div>
-        <div class="serv-name-h">Lavado Mantenimiento</div>
-        <div class="serv-desc-p">Lavado exterior + aspirado rápido. Ideal para mantenimiento frecuente.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="150">
-        <div class="serv-icon">🪑</div>
-        <div class="serv-name-h">Detailing Interior</div>
-        <div class="serv-desc-p">Limpieza profunda e hidratación de cueros, tapizados, tablero y techo.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="serv-icon">🛡️</div>
-        <div class="serv-name-h">Tratamiento Cerámico</div>
-        <div class="serv-desc-p">Descontaminación + Clay Bar + pulido 3 pasos + sellador cerámico profesional.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="250">
-        <div class="serv-icon">💡</div>
-        <div class="serv-name-h">Restauración Ópticas</div>
-        <div class="serv-desc-p">Lijado multipaso, pulido y sellado cerámico premium de faros opacos.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="serv-icon">⚙️</div>
-        <div class="serv-name-h">Limpieza de Motor</div>
-        <div class="serv-desc-p">Desengrase apto para eléctricos, limpieza manual, secado y acondicionado.</div>
-      </div>
-      <div class="serv-card" data-aos="fade-up" data-aos-delay="350">
-        <div class="serv-icon">🏆</div>
-        <div class="serv-name-h">Prep. para Evento</div>
-        <div class="serv-desc-p">Detailing completo para exposiciones, shows de autos y presentaciones.</div>
-      </div>
+      <div class="serv-card" data-aos="fade-up"><div class="serv-icon">🚿</div><div class="serv-name-h">Lavado Premium</div><div class="serv-desc-p">Exterior a mano + interior completo + aspirado + desinfección. Productos Toxic Shine.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="50"><div class="serv-icon">✨</div><div class="serv-name-h">Encerado Carnauba</div><div class="serv-desc-p">Cera Carnauba en pasta para protección y brillo profundo de larga duración.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="100"><div class="serv-icon">💧</div><div class="serv-name-h">Lavado Mantenimiento</div><div class="serv-desc-p">Lavado exterior + aspirado rápido. Ideal para mantenimiento frecuente.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="150"><div class="serv-icon">🪑</div><div class="serv-name-h">Detailing Interior</div><div class="serv-desc-p">Limpieza profunda e hidratación de cueros, tapizados, tablero y techo.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="200"><div class="serv-icon">🛡️</div><div class="serv-name-h">Tratamiento Cerámico</div><div class="serv-desc-p">Descontaminación + Clay Bar + pulido 3 pasos + sellador cerámico profesional.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="250"><div class="serv-icon">💡</div><div class="serv-name-h">Restauración Ópticas</div><div class="serv-desc-p">Lijado multipaso, pulido y sellado cerámico premium de faros opacos.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="300"><div class="serv-icon">⚙️</div><div class="serv-name-h">Limpieza de Motor</div><div class="serv-desc-p">Desengrase apto para eléctricos, limpieza manual, secado y acondicionado.</div></div>
+      <div class="serv-card" data-aos="fade-up" data-aos-delay="350"><div class="serv-icon">🏆</div><div class="serv-name-h">Prep. para Evento</div><div class="serv-desc-p">Detailing completo para exposiciones, shows de autos y presentaciones.</div></div>
     </div>
 
-    <!-- Galería -->
     <div class="section-pad">
       <div class="s-eyebrow">Galería</div>
       <h2 class="s-title">EL <span class="r">PROCESO</span></h2>
@@ -839,7 +829,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
       <div class="gallery-item" data-aos="fade-in" data-aos-delay="400"><img src="img/gallery_9.jpg" alt="Resultado final" loading="lazy"></div>
     </div>
 
-    <!-- Otros trabajos -->
     <div class="section-pad">
       <div class="s-eyebrow">Más trabajos</div>
       <h2 class="s-title">TAMBIÉN <span class="r">PASARON</span></h2>
@@ -855,7 +844,7 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
     </div>
   </div>
 
-  <!-- ══ TAB: TURNOS ══ -->
+  <!-- TAB: TURNOS -->
   <div class="tab-panel" id="panel-turnos">
     <div class="section-pad">
       <div class="s-eyebrow">Agenda online</div>
@@ -865,8 +854,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 
     <div class="turno-layout">
       <div class="turno-form" id="turnoForm">
-
-        <!-- Datos personales -->
         <div class="field-group">
           <div class="field-label">Tu nombre</div>
           <input class="field-input" id="clientName" type="text" placeholder="Ej: Carlos">
@@ -879,47 +866,19 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
           <div class="field-label">Auto (marca, modelo, año)</div>
           <input class="field-input" id="clientCar" type="text" placeholder="Ej: Ford Ranger 2022">
         </div>
-
-        <!-- Servicios -->
         <div class="field-group">
           <div class="field-label">Servicio(s) — podés elegir varios</div>
           <div class="serv-opts">
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">🚿</span>
-              <span class="serv-name">Lavado Premium</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">✨</span>
-              <span class="serv-name">Encerado Carnauba</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">💧</span>
-              <span class="serv-name">Lavado Mantenimiento</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">🪑</span>
-              <span class="serv-name">Detailing Interior</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">🛡️</span>
-              <span class="serv-name">Trat. Cerámico</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">💡</span>
-              <span class="serv-name">Restauración Ópticas</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">⚙️</span>
-              <span class="serv-name">Limpieza Motor</span>
-            </div>
-            <div class="serv-opt" onclick="toggleServicio(this)">
-              <span class="serv-icon-s">🏆</span>
-              <span class="serv-name">Prep. Evento</span>
-            </div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">🚿</span><span class="serv-name">Lavado Premium</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">✨</span><span class="serv-name">Encerado Carnauba</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">💧</span><span class="serv-name">Lavado Mantenimiento</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">🪑</span><span class="serv-name">Detailing Interior</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">🛡️</span><span class="serv-name">Trat. Cerámico</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">💡</span><span class="serv-name">Restauración Ópticas</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">⚙️</span><span class="serv-name">Limpieza Motor</span></div>
+            <div class="serv-opt" onclick="toggleServicio(this)"><span class="serv-icon-s">🏆</span><span class="serv-name">Prep. Evento</span></div>
           </div>
         </div>
-
-        <!-- Calendario -->
         <div class="field-group">
           <div class="field-label">Elegí un día</div>
           <div class="cal-header">
@@ -937,8 +896,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
             <div class="cal-day-name">Sáb</div>
           </div>
         </div>
-
-        <!-- Horarios -->
         <div class="field-group">
           <div class="field-label">Horario disponible</div>
           <div class="horario-grid">
@@ -950,14 +907,11 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
             <button class="horario-btn" onclick="selectHorario(this)">15:00</button>
           </div>
         </div>
-
         <button class="btn-race" style="width:100%;justify-content:center;padding:1rem;font-size:.85rem" onclick="confirmarTurno()">
           🏁 Confirmar Turno
         </button>
-
       </div>
 
-      <!-- Confirmación con Google Calendar -->
       <div class="turno-confirm" id="turnoConfirm">
         <span class="confirm-icon">🏎️</span>
         <div class="confirm-title">¡Turno Reservado!</div>
@@ -974,90 +928,24 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
     </div>
   </div>
 
-  <!-- ══ TAB: REVIEWS ══ -->
+  <!-- TAB: REVIEWS -->
   <div class="tab-panel" id="panel-reviews">
     <div class="section-pad">
       <div class="s-eyebrow">Lo que dicen</div>
       <h2 class="s-title">ELLOS YA <span class="r">PASARON</span></h2>
       <p class="s-desc">93 reseñas · 5.0 ⭐ promedio</p>
     </div>
-
     <div class="reviews-grid">
-      <div class="review-card" data-aos="fade-up">
-        <div class="review-header">
-          <div class="review-avatar">MG</div>
-          <div>
-            <div class="review-name">Martín G.</div>
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <div class="review-text">Increíble trabajo, el auto quedó como nuevo. El detailing interior fue impecable, los cueros quedaron hidratados y brillantes. ¡100% recomendable!</div>
-        <div class="review-car">🚗 Ford Ranger 2021</div>
-      </div>
-
-      <div class="review-card" data-aos="fade-up" data-aos-delay="50">
-        <div class="review-header">
-          <div class="review-avatar">SL</div>
-          <div>
-            <div class="review-name">Sofía L.</div>
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <div class="review-text">El encerado Carnauba dejó la pintura con un brillo que nunca había visto. Tomi es muy profesional y puntual. Ya tengo turno para el mes que viene.</div>
-        <div class="review-car">🚗 Audi A3 2020</div>
-      </div>
-
-      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="review-header">
-          <div class="review-avatar">RP</div>
-          <div>
-            <div class="review-name">Rodrigo P.</div>
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <div class="review-text">Llevé el auto bastante sucio del barro y lo devolvió impecable. El tratamiento cerámico vale cada peso. Se nota la diferencia con el agua que resbala sola.</div>
-        <div class="review-car">🚗 Jeep Compass 2022</div>
-      </div>
-
-      <div class="review-card" data-aos="fade-up" data-aos-delay="150">
-        <div class="review-header">
-          <div class="review-avatar">LV</div>
-          <div>
-            <div class="review-name">Laura V.</div>
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <div class="review-text">Restauración de ópticas sorprendente. Mis faros estaban amarillos y quedaron como los del concesionario. Precio justo y muy buen trato.</div>
-        <div class="review-car">🚗 Honda HR-V 2019</div>
-      </div>
-
-      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="review-header">
-          <div class="review-avatar">DM</div>
-          <div>
-            <div class="review-name">Diego M.</div>
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <div class="review-text">Preparé el auto para una exposición con El Gato Negro. El resultado fue espectacular, ganamos primer puesto en la categoría. Artesanía pura.</div>
-        <div class="review-car">🚗 Chevrolet Camaro 1969</div>
-      </div>
-
-      <div class="review-card" data-aos="fade-up" data-aos-delay="250">
-        <div class="review-header">
-          <div class="review-avatar">FM</div>
-          <div>
-            <div class="review-name">Federico M.</div>
-            <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-        <div class="review-text">La limpieza del motor superó todas mis expectativas. Todo desengrasado, brillante y ordenado. Parecía recién salido de fábrica. Gran trabajo.</div>
-        <div class="review-car">🚗 BMW 323i 2015</div>
-      </div>
+      <div class="review-card" data-aos="fade-up"><div class="review-header"><div class="review-avatar">MG</div><div><div class="review-name">Martín G.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><div class="review-text">Increíble trabajo, el auto quedó como nuevo. El detailing interior fue impecable, los cueros quedaron hidratados y brillantes. ¡100% recomendable!</div><div class="review-car">🚗 Ford Ranger 2021</div></div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="50"><div class="review-header"><div class="review-avatar">SL</div><div><div class="review-name">Sofía L.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><div class="review-text">El encerado Carnauba dejó la pintura con un brillo que nunca había visto. Tomi es muy profesional y puntual. Ya tengo turno para el mes que viene.</div><div class="review-car">🚗 Audi A3 2020</div></div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="100"><div class="review-header"><div class="review-avatar">RP</div><div><div class="review-name">Rodrigo P.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><div class="review-text">Llevé el auto bastante sucio del barro y lo devolvió impecable. El tratamiento cerámico vale cada peso. Se nota la diferencia con el agua que resbala sola.</div><div class="review-car">🚗 Jeep Compass 2022</div></div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="150"><div class="review-header"><div class="review-avatar">LV</div><div><div class="review-name">Laura V.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><div class="review-text">Restauración de ópticas sorprendente. Mis faros estaban amarillos y quedaron como los del concesionario. Precio justo y muy buen trato.</div><div class="review-car">🚗 Honda HR-V 2019</div></div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="200"><div class="review-header"><div class="review-avatar">DM</div><div><div class="review-name">Diego M.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><div class="review-text">Preparé el auto para una exposición con El Gato Negro. El resultado fue espectacular, ganamos primer puesto en la categoría. Artesanía pura.</div><div class="review-car">🚗 Chevrolet Camaro 1969</div></div>
+      <div class="review-card" data-aos="fade-up" data-aos-delay="250"><div class="review-header"><div class="review-avatar">FM</div><div><div class="review-name">Federico M.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div></div><div class="review-text">La limpieza del motor superó todas mis expectativas. Todo desengrasado, brillante y ordenado. Parecía recién salido de fábrica. Gran trabajo.</div><div class="review-car">🚗 BMW 323i 2015</div></div>
     </div>
   </div>
 
-  <!-- ══ TAB: MINIJUEGOS ══ -->
+  <!-- TAB: MINIJUEGOS -->
   <div class="tab-panel" id="panel-minijuegos">
     <div class="section-pad">
       <div class="s-eyebrow">Mini Juegos</div>
@@ -1077,7 +965,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
         </button>
       </div>
 
-      <!-- TRIVIA -->
       <div id="game-trivia" class="game-container">
         <div id="trivia-start" class="game-screen">
           <div class="game-title-big">🏎️ TRIVIA<br><span style="color:var(--red)">RÁPIDO & FURIOSO</span></div>
@@ -1086,9 +973,7 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
         </div>
         <div id="trivia-play" class="game-screen" style="display:none">
           <div class="trivia-header">
-            <div class="trivia-progress-wrap">
-              <div class="trivia-progress-bar" id="triviaProgressBar"></div>
-            </div>
+            <div class="trivia-progress-wrap"><div class="trivia-progress-bar" id="triviaProgressBar"></div></div>
             <div class="trivia-meta">
               <span id="triviaQNum">1/10</span>
               <span class="trivia-score-live">⭐ <span id="triviaScoreLive">0</span></span>
@@ -1108,7 +993,6 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
         </div>
       </div>
 
-      <!-- AHORCADO -->
       <div id="game-ahorcado" class="game-container" style="display:none">
         <div id="ahorcado-ui">
           <div class="ahorcado-header">
@@ -1188,12 +1072,21 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
   <div class="footer-copy">© 2026 El Gato Negro Car Detail · Cañuelas, Buenos Aires · Todos los derechos reservados</div>
 </footer>
 
-<!-- ══ WA FLOAT ══ -->
 <a class="wa-float" href="https://wa.me/541168868528?text=Hola%20Tomi!%20Quiero%20info%20sobre%20car%20detail%20🏁" target="_blank" aria-label="WhatsApp">💬</a>
 
 <!-- ══ SCRIPTS ══ -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<!--
+  ARCHIVOS DE AUDIO — colocar en carpeta /audio/:
+    audio/track1.mp3
+    audio/track2.mp3
+    audio/track3.mp3
+  
+  IMAGEN DE FONDO HERO — colocar en carpeta /img/:
+    img/autoherofondo.png
+-->
 <audio id="audioPlayer" preload="none"></audio>
 
 <script>
@@ -1228,7 +1121,7 @@ AOS.init({duration:600,easing:'ease-out',once:true,offset:40});
 particlesJS('particles-js',{particles:{number:{value:35},color:{value:'#e3000f'},shape:{type:'circle'},opacity:{value:.4,random:true},size:{value:2,random:true},line_linked:{enable:true,distance:120,color:'#e3000f',opacity:.12,width:1},move:{enable:true,speed:1.2,random:true}},interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'repulse'},onclick:{enable:true,mode:'push'}}}});
 
 // ══════════════════════════════════════
-// COUNTER ANIMATION
+// COUNTER
 // ══════════════════════════════════════
 function animCount(el,target,suffix=''){
   let c=0;const step=Math.ceil(target/60);
@@ -1273,7 +1166,6 @@ function slideMove(dir){slideTo(slideIdx+dir)}
 function resetSlideTimer(){clearInterval(slideTimer);slideTimer=setInterval(()=>slideTo((slideIdx+1)%slideTot),5000)}
 resetSlideTimer();
 
-// Swipe
 let tsX=0;
 document.getElementById('mainSlider').addEventListener('touchstart',e=>tsX=e.touches[0].clientX,{passive:true});
 document.getElementById('mainSlider').addEventListener('touchend',e=>{const dx=tsX-e.changedTouches[0].clientX;if(Math.abs(dx)>40)slideMove(dx>0?1:-1)},{passive:true});
@@ -1357,8 +1249,6 @@ function confirmarTurno(){
   document.getElementById('confirmMsg').innerHTML=msg.replace(/\n/g,'<br>');
   document.getElementById('turnoForm').style.display='none';
   document.getElementById('turnoConfirm').classList.add('show');
-
-  // Google Calendar link
   const [hh,mm]=selHor.textContent.split(':').map(Number);
   const pad=n=>String(n).padStart(2,'0');
   const dtStart=`${calYear}${pad(calMonth+1)}${pad(selectedDay)}T${pad(hh)}${pad(mm||0)}00`;
@@ -1367,16 +1257,13 @@ function confirmarTurno(){
   const gcDetails=encodeURIComponent(`Auto: ${car}\nServicio: ${srvs.join(', ')}\nContacto: +54 11 6886-8528 (Tomi)`);
   const gcLocation=encodeURIComponent('El Gato Negro Car Detail, Cañuelas, Buenos Aires');
   document.getElementById('gcalLink').href=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${gcTitle}&dates=${dtStart}/${dtEnd}&details=${gcDetails}&location=${gcLocation}`;
-
   setTimeout(()=>window.open('https://wa.me/541168868528?text='+encodeURIComponent(
     `Hola Tomi! Quiero reservar un turno 🏁\nNombre: ${name}\nAuto: ${car}\nDía: ${selectedDay}/${calMonth+1}/${calYear} · ${selHor.textContent}\nServicio: ${srvs.join(', ')}\nTeléfono: ${phone}`
   ),'_blank'),900);
 }
 initCal();
 
-// ══════════════════════════════════════
-// WATER RIPPLE en botones .btn-race
-// ══════════════════════════════════════
+// Water ripple
 document.querySelectorAll('.btn-race').forEach(btn=>{
   btn.addEventListener('click',e=>{
     const r=document.createElement('span');
@@ -1390,6 +1277,7 @@ document.querySelectorAll('.btn-race').forEach(btn=>{
 
 // ══════════════════════════════════════
 // MUSIC PLAYER
+// Rutas: audio/track1.mp3, audio/track2.mp3, audio/track3.mp3
 // ══════════════════════════════════════
 const tracks=[
   {title:'Toretto\'s Theme',artist:'Brian Tyler',src:'audio/track1.mp3'},
@@ -1399,13 +1287,22 @@ const tracks=[
 let tIdx=0,isPlaying=false;
 const ap=document.getElementById('audioPlayer');
 function loadTrack(i){
-  const t=tracks[i];ap.src=t.src;
+  const t=tracks[i];
+  ap.src=t.src;
   document.getElementById('musicTitle').textContent=t.title;
   document.getElementById('musicArtist').textContent=t.artist;
+  document.getElementById('musicProgress').style.width='0%';
 }
 function togglePlay(){
-  if(isPlaying){ap.pause();isPlaying=false;document.getElementById('playBtn').textContent='▶';document.getElementById('musicArt').classList.remove('playing')}
-  else{ap.play().catch(()=>{});isPlaying=true;document.getElementById('playBtn').textContent='⏸';document.getElementById('musicArt').classList.add('playing')}
+  if(isPlaying){
+    ap.pause();isPlaying=false;
+    document.getElementById('playBtn').textContent='▶';
+    document.getElementById('musicArt').classList.remove('playing');
+  } else {
+    ap.play().catch(()=>{});isPlaying=true;
+    document.getElementById('playBtn').textContent='⏸';
+    document.getElementById('musicArt').classList.add('playing');
+  }
 }
 function nextTrack(){tIdx=(tIdx+1)%tracks.length;loadTrack(tIdx);if(isPlaying)ap.play().catch(()=>{})}
 function prevTrack(){tIdx=(tIdx-1+tracks.length)%tracks.length;loadTrack(tIdx);if(isPlaying)ap.play().catch(()=>{})}
@@ -1413,7 +1310,8 @@ function setVol(v){ap.volume=v}
 function seekMusic(e){const r=e.currentTarget.getBoundingClientRect();ap.currentTime=((e.clientX-r.left)/r.width)*ap.duration||0}
 ap.addEventListener('timeupdate',()=>{if(ap.duration)document.getElementById('musicProgress').style.width=(ap.currentTime/ap.duration*100)+'%'});
 ap.addEventListener('ended',nextTrack);
-ap.volume=.6;loadTrack(0);
+ap.volume=.6;
+loadTrack(0);
 
 // ══════════════════════════════════════
 // MINIJUEGOS — Selector
