@@ -383,9 +383,50 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
   display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:3px;
   padding:0 1.2rem 1.5rem;
 }
-.gallery-item{aspect-ratio:1;overflow:hidden;cursor:none}
+.gallery-item{aspect-ratio:1;overflow:hidden;cursor:none;position:relative}
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,filter .3s}
 .gallery-item:hover img{transform:scale(1.08);filter:brightness(1.15)}
+
+/* ════════════════════════════════════════
+   LIGHTBOX
+════════════════════════════════════════ */
+#lightbox{
+  position:fixed;inset:0;z-index:3000;
+  background:rgba(0,0,0,.96);
+  display:none;align-items:center;justify-content:center;
+  padding:1rem;
+}
+#lightbox.open{display:flex}
+#lightbox img{
+  max-width:100%;max-height:90dvh;
+  object-fit:contain;
+  border:1px solid var(--border);
+  box-shadow:0 0 60px rgba(227,0,15,.2);
+  animation:lbIn .25s ease;
+}
+@keyframes lbIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+.lb-close{
+  position:absolute;top:1rem;right:1rem;
+  background:rgba(227,0,15,.85);border:none;color:#fff;
+  width:36px;height:36px;font-size:1.1rem;cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.lb-close:hover{background:var(--dark-red)}
+.lb-prev,.lb-next{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(8,8,8,.7);border:1px solid var(--border);color:var(--white);
+  width:40px;height:40px;font-size:1.3rem;cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s;
+}
+.lb-prev{left:.8rem}.lb-next{right:.8rem}
+.lb-prev:hover,.lb-next:hover{background:var(--red);border-color:var(--red)}
+.lb-counter{
+  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
+  font-family:var(--font-display);font-size:1rem;color:rgba(255,255,255,.5);
+  letter-spacing:.1em;
+}
 
 /* ════════════════════════════════════════
    SERVICIOS
@@ -1068,6 +1109,15 @@ body:has(a:hover,button:hover) #cursor{transform:translate(-50%,-50%) scale(2)}
 
 </section>
 
+<!-- ══ LIGHTBOX GALERÍA ══ -->
+<div id="lightbox" onclick="lbClickOutside(event)">
+  <button class="lb-close" onclick="lbClose()">✕</button>
+  <button class="lb-prev" onclick="lbMove(-1)">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-next" onclick="lbMove(1)">›</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
 <!-- ══ MODAL ══ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal-box" id="modalBox">
@@ -1511,7 +1561,73 @@ function guessLetter(letter){
   if(won){msg.style.color='#00ff88';msg.textContent='🏆 ¡LO LOGRASTE!';document.querySelectorAll('.ahorcado-key').forEach(k=>k.disabled=true);}
   else if(ahWrong>=6){msg.style.color='var(--red)';msg.textContent='💀 Era: '+ahWord;document.querySelectorAll('.ahorcado-key').forEach(k=>k.disabled=true);}
 }
-initAhorcado();
+// ══════════════════════════════════════
+// LIGHTBOX
+// ══════════════════════════════════════
+let lbImages=[],lbIdx=0;
+
+// Al cargar la página, recolectar todas las imágenes de las galerías
+// y asignar onclick a cada gallery-item
+document.addEventListener('DOMContentLoaded',()=>{
+  initLightbox();
+});
+function initLightbox(){
+  lbImages=[];
+  document.querySelectorAll('.gallery-item img').forEach((img,i)=>{
+    lbImages.push({src:img.src,alt:img.alt});
+    img.parentElement.style.cursor='pointer';
+    img.parentElement.onclick=(()=>{
+      const idx=i;
+      return ()=>lbOpen(idx);
+    })();
+  });
+}
+function lbOpen(idx){
+  lbIdx=idx;
+  lbRender();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function lbRender(){
+  const lb=document.getElementById('lightbox');
+  const img=document.getElementById('lbImg');
+  // Animar salida/entrada
+  img.style.opacity='0';
+  img.style.transform='scale(.93)';
+  setTimeout(()=>{
+    img.src=lbImages[lbIdx].src;
+    img.alt=lbImages[lbIdx].alt;
+    img.style.transition='opacity .22s ease, transform .22s ease';
+    img.style.opacity='1';
+    img.style.transform='scale(1)';
+  },80);
+  document.getElementById('lbCounter').textContent=(lbIdx+1)+' / '+lbImages.length;
+}
+function lbMove(dir){
+  lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length;
+  lbRender();
+}
+function lbClose(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbClickOutside(e){
+  if(e.target===document.getElementById('lightbox'))lbClose();
+}
+// Teclado: flechas + Escape
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='ArrowRight')lbMove(1);
+  else if(e.key==='ArrowLeft')lbMove(-1);
+  else if(e.key==='Escape')lbClose();
+});
+// Swipe en móvil
+let lbTouchX=0;
+document.getElementById('lightbox').addEventListener('touchstart',e=>lbTouchX=e.touches[0].clientX,{passive:true});
+document.getElementById('lightbox').addEventListener('touchend',e=>{
+  const dx=lbTouchX-e.changedTouches[0].clientX;
+  if(Math.abs(dx)>40)lbMove(dx>0?1:-1);
+},{passive:true});
 </script>
 </body>
 </html>
