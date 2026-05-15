@@ -24,8 +24,9 @@ function doPost(e) {
     var hour  = parseInt(p.hour,  10);
     var min   = parseInt(p.min,   10) || 0;
 
+    var dur   = parseFloat(p.dur) || 2;
     var start = new Date(year, month, day, hour, min, 0);
-    var end   = new Date(year, month, day, hour + 2, min, 0);
+    var end   = new Date(start.getTime() + dur * 3600000);
 
     var title = 'TURNO - ' + p.car + ' - ' + p.services;
 
