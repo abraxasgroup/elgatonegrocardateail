@@ -14,30 +14,38 @@
 
 var CALENDAR_ID = 'elgatonegrocarshop@gmail.com';
 
-function doPost(e) {
-  try {
-    var p = e.parameter;
+// doGet maneja tanto la prueba (sin parametros) como los turnos reales (con parametros).
+// Se usa GET porque es la forma mas confiable desde un sitio estatico sin backend.
+function doGet(e) {
+  var p = e.parameter;
 
+  // Sin parametros: confirmacion de que el script esta activo
+  if (!p || !p.name) {
+    return ContentService
+      .createTextOutput('Script activo OK')
+      .setMimeType(ContentService.MimeType.TEXT);
+  }
+
+  try {
     var day   = parseInt(p.day,   10);
     var month = parseInt(p.month, 10) - 1;
     var year  = parseInt(p.year,  10);
     var hour  = parseInt(p.hour,  10);
     var min   = parseInt(p.min,   10) || 0;
-
     var dur   = parseFloat(p.dur) || 2;
+
     var start = new Date(year, month, day, hour, min, 0);
     var end   = new Date(start.getTime() + dur * 3600000);
 
     var title = 'TURNO - ' + p.car + ' - ' + p.services;
 
-    var desc = 'Cliente: ' + p.name + '\n'
-             + 'Telefono: ' + p.phone + '\n'
-             + 'Auto: ' + p.car + '\n'
+    var desc = 'Cliente: '   + p.name     + '\n'
+             + 'Telefono: '  + p.phone    + '\n'
+             + 'Auto: '      + p.car      + '\n'
              + 'Servicios: ' + p.services + '\n'
-             + 'Horario: ' + p.horario;
+             + 'Horario: '   + p.horario;
 
-    var cal = CalendarApp.getCalendarById(CALENDAR_ID);
-
+    var cal   = CalendarApp.getCalendarById(CALENDAR_ID);
     var event = cal.createEvent(title, start, end, {
       description: desc,
       location: 'El Gato Negro Car Detail, Canuelas, Buenos Aires'
@@ -54,10 +62,4 @@ function doPost(e) {
       .createTextOutput(JSON.stringify({ ok: false, error: err.message }))
       .setMimeType(ContentService.MimeType.JSON);
   }
-}
-
-function doGet() {
-  return ContentService
-    .createTextOutput('Script activo OK')
-    .setMimeType(ContentService.MimeType.TEXT);
 }
