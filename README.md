@@ -43,4 +43,4 @@ git push -u origin main
 
 - Instagram: [@elgatonegrocardetail](https://www.instagram.com/elgatonegrocardetail/)
 - WhatsApp Tomi: +54 11 6886-8528
-- Punto de venta: [@justoesoshop](https://www.instagram.com/justoesoshop/) · Cañuelas, BA
+- Punto de venta: [@digitaimotor](https://www.instagram.com/digitaimotor/) · Cañuelas, BA
