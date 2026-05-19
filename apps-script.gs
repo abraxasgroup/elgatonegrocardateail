@@ -14,18 +14,59 @@
 
 var CALENDAR_ID = 'elgatonegrocarshop@gmail.com';
 
-// doGet maneja tanto la prueba (sin parametros) como los turnos reales (con parametros).
-// Se usa GET porque es la forma mas confiable desde un sitio estatico sin backend.
 function doGet(e) {
   var p = e.parameter;
 
-  // Sin parametros: confirmacion de que el script esta activo
-  if (!p || !p.name) {
+  // Prueba sin parametros
+  if (!p || (!p.action && !p.name)) {
     return ContentService
       .createTextOutput('Script activo OK')
       .setMimeType(ContentService.MimeType.TEXT);
   }
 
+  // Consulta de disponibilidad
+  if (p.action === 'availability') {
+    return getAvailability(p.date);
+  }
+
+  // Crear turno
+  return createTurno(p);
+}
+
+// Devuelve los eventos del dia como [{start, end}] en horas decimales
+function getAvailability(dateStr) {
+  try {
+    var parts    = dateStr.split('-');
+    var year     = parseInt(parts[0], 10);
+    var month    = parseInt(parts[1], 10) - 1;
+    var day      = parseInt(parts[2], 10);
+    var dayStart = new Date(year, month, day, 0,  0,  0);
+    var dayEnd   = new Date(year, month, day, 23, 59, 59);
+
+    var cal    = CalendarApp.getCalendarById(CALENDAR_ID);
+    var events = cal.getEvents(dayStart, dayEnd);
+
+    var result = events.map(function(ev) {
+      var s = ev.getStartTime();
+      var e = ev.getEndTime();
+      return {
+        start: s.getHours() + s.getMinutes() / 60,
+        end:   e.getHours() + e.getMinutes() / 60
+      };
+    });
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: true, events: result }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: false, events: [], error: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function createTurno(p) {
   try {
     var day   = parseInt(p.day,   10);
     var month = parseInt(p.month, 10) - 1;
