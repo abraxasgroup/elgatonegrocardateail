@@ -15,10 +15,17 @@
 var CALENDAR_ID = 'elgatonegrocarshop@gmail.com';
 
 function doGet(e) {
+  // Cuando se ejecuta desde el editor el evento llega undefined
+  if (!e || !e.parameter) {
+    return ContentService
+      .createTextOutput('Script activo OK (ejecutado desde editor)')
+      .setMimeType(ContentService.MimeType.TEXT);
+  }
+
   var p = e.parameter;
 
-  // Prueba sin parametros
-  if (!p || (!p.action && !p.name)) {
+  // Prueba sin parametros via URL
+  if (!p.action && !p.name) {
     return ContentService
       .createTextOutput('Script activo OK')
       .setMimeType(ContentService.MimeType.TEXT);
